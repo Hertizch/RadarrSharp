@@ -4,6 +4,14 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <RepositoryUrl>https://github.com/Hertizch/RadarrSharp</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/Hertizch/RadarrSharp</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/Hertizch/RadarrSharp/blob/master/LICENSE</PackageLicenseUrl>
+    <Authors>Hertizch</Authors>
+    <Company>Hertizch</Company>
+    <Description>C# Radarr API wrapper</Description>
+    <Copyright>Hertizch</Copyright>
+    <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -12,10 +20,6 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Endpoints\" />
   </ItemGroup>
 
 </Project>

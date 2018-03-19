@@ -1,4 +1,10 @@
-﻿using RadarrSharp.Helpers;
+﻿using RadarrSharp.Endpoints.Calendar;
+using RadarrSharp.Endpoints.Command;
+using RadarrSharp.Endpoints.Diskspace;
+using RadarrSharp.Endpoints.History;
+using RadarrSharp.Endpoints.Movie;
+using RadarrSharp.Endpoints.SystemStatus;
+using RadarrSharp.Helpers;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -19,13 +25,13 @@ namespace RadarrSharp
         private WebClient _webClient;
 
         /// <summary>
-        /// Creates the API client to communicate with Radarr service
+        /// Initializes a new instance of the <see cref="RadarrClient"/> class.
         /// </summary>
-        /// <param name="host">Client hostname or IP address</param>
-        /// <param name="port">Client port</param>
-        /// <param name="apiKey">Client API key</param>
-        /// <param name="urlBase">Url base for reverse proxy support</param>
-        /// <param name="useSsl">Communicate with client securely</param>
+        /// <param name="host">The host.</param>
+        /// <param name="port">The port.</param>
+        /// <param name="apiKey">The API key.</param>
+        /// <param name="urlBase">The URL base.</param>
+        /// <param name="useSsl">if set to <c>true</c> [use SSL].</param>
         public RadarrClient(string host, int port, string apiKey, [Optional] string urlBase, [Optional] bool useSsl)
         {
             // Initialize properties
@@ -37,6 +43,14 @@ namespace RadarrSharp
 
             // Set API URL
             ApiUrl = $"http{(UseSsl ? "s" : "")}://{Host}:{Port}{("/" + UrlBase ?? "")}/api";
+
+            // Initialize endpoints
+            Calendar = new Calendar(this);
+            Command = new Command(this);
+            Diskspace = new Diskspace(this);
+            History = new History(this);
+            Movie = new Movie(this);
+            SystemStatus = new SystemStatus(this);
         }
 
         /// <summary>
@@ -83,6 +97,36 @@ namespace RadarrSharp
         /// Verbose logging - should only be used for debugging
         /// </summary>
         public bool VerboseLogging { get; set; }
+
+        /// <summary>
+        /// Calendar endpoint client
+        /// </summary>
+        public ICalendar Calendar { get; }
+
+        /// <summary>
+        /// Command endpoint client
+        /// </summary>
+        public ICommand Command { get; }
+
+        /// <summary>
+        /// Diskspace endpoint client
+        /// </summary>
+        public IDiskspace Diskspace { get; }
+
+        /// <summary>
+        /// History endpoint client
+        /// </summary>
+        public IHistory History { get; }
+
+        /// <summary>
+        /// Movie endpoint client
+        /// </summary>
+        public IMovie Movie { get; }
+
+        /// <summary>
+        /// SystemStatus endpoint client
+        /// </summary>
+        public ISystemStatus SystemStatus { get; }
 
         /// <summary>
         /// Gets the GET response as a json formatted string
