@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 namespace RadarrSharp
 {
     /// <summary>
-    /// 
+    /// RadarrClient
     /// </summary>
     public class RadarrClient
     {

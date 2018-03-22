@@ -12,6 +12,7 @@
     <Description>C# Radarr API wrapper</Description>
     <Copyright>Hertizch</Copyright>
     <NeutralLanguage>en</NeutralLanguage>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

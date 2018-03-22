@@ -5,22 +5,22 @@ namespace RadarrSharp.Endpoints.Movie.Data
     /// <summary>
     /// 
     /// </summary>
-    public partial class Image
+    public partial class Revision
     {
         /// <summary>
-        /// Gets or sets the type of the cover.
+        /// Gets or sets the version.
         /// </summary>
         /// <value>
-        /// The type of the cover.
+        /// The version.
         /// </value>
-        [J("coverType")] public string CoverType { get; set; }
+        [J("version")] public long Version { get; set; }
 
         /// <summary>
-        /// Gets or sets the URL.
+        /// Gets or sets the real.
         /// </summary>
         /// <value>
-        /// The URL.
+        /// The real.
         /// </value>
-        [J("url")] public string Url { get; set; }
+        [J("real")] public long Real { get; set; }
     }
 }
