@@ -1,11 +1,11 @@
 ﻿using J = Newtonsoft.Json.JsonPropertyAttribute;
 
-namespace RadarrSharp.Endpoints.Movie.Data
+namespace RadarrSharp.Models
 {
     /// <summary>
     /// 
     /// </summary>
-    public partial class MovieFileQuality
+    public partial class RecordQuality
     {
         /// <summary>
         /// Gets or sets the quality.
@@ -22,13 +22,5 @@ namespace RadarrSharp.Endpoints.Movie.Data
         /// The revision.
         /// </value>
         [J("revision")] public Revision Revision { get; set; }
-
-        /// <summary>
-        /// Gets or sets the hardcoded subs.
-        /// </summary>
-        /// <value>
-        /// The hardcoded subs.
-        /// </value>
-        [J("hardcodedSubs")] public string HardcodedSubs { get; set; }
     }
 }

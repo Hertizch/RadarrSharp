@@ -7,7 +7,6 @@ using RadarrSharp.Endpoints.SystemStatus;
 using RadarrSharp.Helpers;
 using System;
 using System.Diagnostics;
-using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
@@ -18,14 +17,14 @@ using System.Threading.Tasks;
 namespace RadarrSharp
 {
     /// <summary>
-    /// RadarrClient
+    /// 
     /// </summary>
     public class RadarrClient
     {
         private WebClient _webClient;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RadarrClient"/> class.
+        /// Initializes a new instance of the <see cref="RadarrClient" /> class.
         /// </summary>
         /// <param name="host">The host.</param>
         /// <param name="port">The port.</param>
@@ -56,86 +55,118 @@ namespace RadarrSharp
         /// <summary>
         /// Client hostname or IP address
         /// </summary>
+        /// <value>
+        /// The host.
+        /// </value>
         public string Host { get; private set; }
 
         /// <summary>
         /// Client port
         /// </summary>
+        /// <value>
+        /// The port.
+        /// </value>
         public int Port { get; private set; }
 
         /// <summary>
         /// Client API key
         /// </summary>
+        /// <value>
+        /// The API key.
+        /// </value>
         public string ApiKey { get; private set; }
 
         /// <summary>
         /// Url base for reverse proxy support
         /// </summary>
+        /// <value>
+        /// The URL base.
+        /// </value>
         public string UrlBase { get; private set; }
 
         /// <summary>
         /// Communicate with client securely
         /// </summary>
+        /// <value>
+        ///   <c>true</c> if [use SSL]; otherwise, <c>false</c>.
+        /// </value>
         public bool UseSsl { get; private set; }
 
         /// <summary>
         /// Client API url
         /// </summary>
+        /// <value>
+        /// The API URL.
+        /// </value>
         internal string ApiUrl { get; private set; }
 
         /// <summary>
-        /// (NOT YET USED) Write log information to file - defaults to false
+        /// Gets or sets a value indicating whether [write debug].
         /// </summary>
-        public bool WriteLogToFile { get; set; }
-
-        /// <summary>
-        /// Log filename - defaults to radarrSharp.log in executing assembly path
-        /// </summary>
-        public string LogFilename { get; set; } = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "radarrSharp.log");
-
-        /// <summary>
-        /// Verbose logging - should only be used for debugging
-        /// </summary>
-        public bool VerboseLogging { get; set; }
+        /// <value>
+        ///   <c>true</c> if [write debug]; otherwise, <c>false</c>.
+        /// </value>
+        public bool WriteDebug { get; set; }
 
         /// <summary>
         /// Calendar endpoint client
         /// </summary>
+        /// <value>
+        /// The calendar.
+        /// </value>
         public ICalendar Calendar { get; }
 
         /// <summary>
         /// Command endpoint client
         /// </summary>
+        /// <value>
+        /// The command.
+        /// </value>
         public ICommand Command { get; }
 
         /// <summary>
         /// Diskspace endpoint client
         /// </summary>
+        /// <value>
+        /// The diskspace.
+        /// </value>
         public IDiskspace Diskspace { get; }
 
         /// <summary>
         /// History endpoint client
         /// </summary>
+        /// <value>
+        /// The history.
+        /// </value>
         public IHistory History { get; }
 
         /// <summary>
         /// Movie endpoint client
         /// </summary>
+        /// <value>
+        /// The movie.
+        /// </value>
         public IMovie Movie { get; }
 
         /// <summary>
         /// SystemStatus endpoint client
         /// </summary>
+        /// <value>
+        /// The system status.
+        /// </value>
         public ISystemStatus SystemStatus { get; }
 
         /// <summary>
         /// Gets the GET response as a json formatted string
         /// </summary>
         /// <param name="endpointUrl">Endpoint URL</param>
-        /// <returns>string</returns>
+        /// <returns>
+        /// string
+        /// </returns>
         internal async Task<string> GetJson(string endpointUrl)
         {
-            Debug.WriteLine($"[{DateTime.Now}] [INFO] [RadarrClient.GetJson] {ApiUrl}{endpointUrl}");
+            if (WriteDebug)
+                Debug.WriteLine($"[{DateTime.Now}] [INFO] [RadarrClient.GetJson] {ApiUrl}{endpointUrl}");
 
             var response = string.Empty;
 
@@ -151,7 +182,7 @@ namespace RadarrSharp
                 }
                 finally
                 {
-                    if (VerboseLogging)
+                    if (WriteDebug)
                     {
                         Debug.WriteLine($"[{DateTime.Now}] [DEBUG] [RadarrClient.GetJson] Response: {response}");
                         var webClientHeaders = _webClient.ResponseHeaders;
@@ -174,10 +205,13 @@ namespace RadarrSharp
         /// <param name="endpointUrl">Endpoint URL</param>
         /// <param name="data">Json formatted string</param>
         /// <param name="method">HTTP method, POST/PUT</param>
-        /// <returns>string</returns>
+        /// <returns>
+        /// string
+        /// </returns>
         internal async Task<string> PostJson(string endpointUrl, string data, string method)
         {
-            Debug.WriteLine($"[{DateTime.Now}] [INFO] [RadarrClient.PostJson] {ApiUrl}{endpointUrl} - Data: {data}");
+            if (WriteDebug)
+                Debug.WriteLine($"[{DateTime.Now}] [INFO] [RadarrClient.PostJson] {ApiUrl}{endpointUrl} - Data: {data}");
 
             var response = string.Empty;
 
@@ -193,7 +227,7 @@ namespace RadarrSharp
                 }
                 finally
                 {
-                    if (VerboseLogging)
+                    if (WriteDebug)
                     {
                         Debug.WriteLine($"[{DateTime.Now}] [DEBUG] [RadarrClient.PostJson] Response: {response}");
                         var webClientHeaders = _webClient.ResponseHeaders;
@@ -214,10 +248,13 @@ namespace RadarrSharp
         /// Send DELETE request to specified url
         /// </summary>
         /// <param name="endpointUrl">Endpoint URL</param>
-        /// <returns>Nothing</returns>
+        /// <returns>
+        /// Nothing
+        /// </returns>
         internal async Task Delete(string endpointUrl)
         {
-            Debug.WriteLine($"[{DateTime.Now}] [INFO] [RadarrClient.Delete] {ApiUrl}{endpointUrl}");
+            if (WriteDebug)
+                Debug.WriteLine($"[{DateTime.Now}] [INFO] [RadarrClient.Delete] {ApiUrl}{endpointUrl}");
 
             using (var httpClient = new HttpClient { BaseAddress = new Uri(ApiUrl) })
             {

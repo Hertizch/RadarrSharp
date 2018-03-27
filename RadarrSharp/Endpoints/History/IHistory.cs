@@ -16,7 +16,9 @@ namespace RadarrSharp.Endpoints.History
         /// <param name="pageSize">Page size</param>
         /// <param name="sortKey">Movie title or Date</param>
         /// <param name="sortDirection">Sort direction</param>
-        /// <returns>Data.History</returns>
-        Task<Data.History> GetHistory(int page, [Optional] int pageSize, [Optional] string sortKey, [Optional] SortDirection sortDirection);
+        /// <returns>
+        /// Models.History
+        /// </returns>
+        Task<Models.History> GetHistory(int page, [Optional] int pageSize, [Optional] string sortKey, [Optional] SortDirection sortDirection);
     }
 }

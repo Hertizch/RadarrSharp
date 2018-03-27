@@ -14,7 +14,7 @@ namespace RadarrSharp.Endpoints.Movie
         private RadarrClient _radarrClient;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Movie"/> class.
+        /// Initializes a new instance of the <see cref="Movie" /> class.
         /// </summary>
         /// <param name="radarrClient">The radarr client.</param>
         public Movie(RadarrClient radarrClient)
@@ -25,13 +25,15 @@ namespace RadarrSharp.Endpoints.Movie
         /// <summary>
         /// Returns all Movies in your collection
         /// </summary>
-        /// <returns>Data.Movie[]</returns>
-        public async Task<Data.Movie[]> GetMovies()
+        /// <returns>
+        /// Models.Movie[]
+        /// </returns>
+        public async Task<Models.Movie[]> GetMovies()
         {
             var json = await _radarrClient.GetJson("/movie");
 
             if (!string.IsNullOrEmpty(json))
-                return JsonConvert.DeserializeObject<Data.Movie[]>(json, JsonHelpers.SerializerSettings);
+                return JsonConvert.DeserializeObject<Models.Movie[]>(json, JsonHelpers.SerializerSettings);
 
             return null;
         }
@@ -40,13 +42,15 @@ namespace RadarrSharp.Endpoints.Movie
         /// Returns the movie with the matching ID
         /// </summary>
         /// <param name="id">Movie ID</param>
-        /// <returns>Data.Movie</returns>
-        public async Task<Data.Movie> GetMovie(int id)
+        /// <returns>
+        /// Models.Movie
+        /// </returns>
+        public async Task<Models.Movie> GetMovie(int id)
         {
             var json = await _radarrClient.GetJson($"/movie/id={id}");
 
             if (!string.IsNullOrEmpty(json))
-                return JsonConvert.DeserializeObject<Data.Movie>(json, JsonHelpers.SerializerSettings);
+                return JsonConvert.DeserializeObject<Models.Movie>(json, JsonHelpers.SerializerSettings);
 
             return null;
         }
@@ -62,8 +66,10 @@ namespace RadarrSharp.Endpoints.Movie
         /// <param name="rootFolderPath">Full path will be created by combining the rootFolderPath with the movie title</param>
         /// <param name="monitored">Is monitored</param>
         /// <param name="addOptions">Usage unknown</param>
-        /// <returns>Data.Movie</returns>
-        public async Task<Data.Movie> AddMovie(string title, int qualityProfileId, string titleSlug, Data.Image[] images, int tmdbId, string rootFolderPath, [Optional] bool monitored, [Optional] Dictionary<string, bool> addOptions)
+        /// <returns>
+        /// Models.Movie
+        /// </returns>
+        public async Task<Models.Movie> AddMovie(string title, int qualityProfileId, string titleSlug, Models.Image[] images, int tmdbId, string rootFolderPath, [Optional] bool monitored, [Optional] Dictionary<string, bool> addOptions)
         {
             var dictionary = new Dictionary<string, object>
             {
@@ -84,7 +90,7 @@ namespace RadarrSharp.Endpoints.Movie
             var json = await _radarrClient.PostJson("/movie", parameter, "POST");
 
             if (!string.IsNullOrEmpty(json))
-                return JsonConvert.DeserializeObject<Data.Movie>(json, JsonHelpers.SerializerSettings);
+                return JsonConvert.DeserializeObject<Models.Movie>(json, JsonHelpers.SerializerSettings);
 
             return null;
         }
@@ -93,13 +99,15 @@ namespace RadarrSharp.Endpoints.Movie
         /// Update an existing movie
         /// </summary>
         /// <param name="movie">Movie to update - Requires all properties of Data.Movie object</param>
-        /// <returns>Data.Movie</returns>
-        public async Task<Data.Movie> UpdateMovie(Data.Movie movie)
+        /// <returns>
+        /// Models.Movie
+        /// </returns>
+        public async Task<Models.Movie> UpdateMovie(Models.Movie movie)
         {
             var json = await _radarrClient.PostJson("/movie", JsonConvert.SerializeObject(movie), "PUT");
 
             if (!string.IsNullOrEmpty(json))
-                return JsonConvert.DeserializeObject<Data.Movie>(json, JsonHelpers.SerializerSettings);
+                return JsonConvert.DeserializeObject<Models.Movie>(json, JsonHelpers.SerializerSettings);
 
             return null;
         }
@@ -109,7 +117,9 @@ namespace RadarrSharp.Endpoints.Movie
         /// </summary>
         /// <param name="id">Movie ID</param>
         /// <param name="deleteFiles">If true the movie folder and all files will be deleted when the movie is deleted</param>
-        /// <returns>Nothing</returns>
+        /// <returns>
+        /// Nothing
+        /// </returns>
         public async Task DeleteMovie(int id, [Optional] bool deleteFiles)
         {
             await _radarrClient.Delete($"/movie/id={id}{(deleteFiles ? $"?deleteFiles={deleteFiles}" : "")}");

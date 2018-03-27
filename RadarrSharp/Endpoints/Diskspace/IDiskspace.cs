@@ -10,7 +10,9 @@ namespace RadarrSharp.Endpoints.Diskspace
         /// <summary>
         /// Gets information about Diskspace
         /// </summary>
-        /// <returns>Data.Diskspace[]</returns>
-        Task<Data.Diskspace[]> GetDiskspace();
+        /// <returns>
+        /// Models.Diskspace[]
+        /// </returns>
+        Task<Models.Diskspace[]> GetDiskspace();
     }
 }

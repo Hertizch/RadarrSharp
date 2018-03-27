@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using RadarrSharp.Enums;
 using RadarrSharp.Helpers;
+using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
@@ -14,7 +16,7 @@ namespace RadarrSharp.Endpoints.History
         private RadarrClient _radarrClient;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="History"/> class.
+        /// Initializes a new instance of the <see cref="History" /> class.
         /// </summary>
         /// <param name="radarrClient">The radarr client.</param>
         public History(RadarrClient radarrClient)
@@ -29,18 +31,41 @@ namespace RadarrSharp.Endpoints.History
         /// <param name="pageSize">Page size</param>
         /// <param name="sortKey">Movie title or Date</param>
         /// <param name="sortDirection">Sort direction</param>
-        /// <returns>Data.History</returns>
-        public async Task<Data.History> GetHistory(int page, [Optional] int pageSize, [Optional] string sortKey, [Optional] SortDirection sortDirection)
+        /// <returns>
+        /// Models.History
+        /// </returns>
+        public async Task<Models.History> GetHistory(int page, [Optional] int pageSize, [Optional] string sortKey, [Optional] SortDirection sortDirection)
         {
             var json = await _radarrClient.GetJson($"/history?page={page}" +
                 $"{(pageSize != 0 ? "&pageSize=" + pageSize : "")}" +
                 $"{(sortKey != null ? "&sortKey=" + sortKey : "")}" +
                 $"{(sortDirection != 0 ? "&sortDir=" + sortDirection.ToString().ToLower() : "")}");
 
-            if (!string.IsNullOrEmpty(json))
-                return JsonConvert.DeserializeObject<Data.History>(json, JsonHelpers.SerializerSettings);
+            return DeserializeObject(json);
+        }
 
-            return null;
+        /// <summary>
+        /// Deserializes the object.
+        /// </summary>
+        /// <param name="json">The json.</param>
+        /// <returns></returns>
+        private static Models.History DeserializeObject(string json)
+        {
+            if (string.IsNullOrEmpty(json))
+            {
+                Debug.WriteLine($"[{DateTime.Now}] [ERROR] [{nameof(History)}.{nameof(DeserializeObject)}({json})] JSON is null");
+                return null;
+            }
+
+            try
+            {
+                return JsonConvert.DeserializeObject<Models.History>(json, JsonHelpers.SerializerSettings);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"[{DateTime.Now}] [ERROR] [{nameof(History)}.{nameof(DeserializeObject)}({json})] {ex}");
+                return null;
+            }
         }
     }
 }

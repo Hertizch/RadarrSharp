@@ -1,6 +1,6 @@
 ﻿using J = Newtonsoft.Json.JsonPropertyAttribute;
 
-namespace RadarrSharp.Endpoints.Calendar.Data
+namespace RadarrSharp.Models
 {
     /// <summary>
     /// 
@@ -8,13 +8,19 @@ namespace RadarrSharp.Endpoints.Calendar.Data
     public partial class Image
     {
         /// <summary>
-        /// 
+        /// Gets or sets the type of the cover.
         /// </summary>
+        /// <value>
+        /// The type of the cover.
+        /// </value>
         [J("coverType")] public string CoverType { get; set; }
 
         /// <summary>
-        /// 
+        /// Gets or sets the URL.
         /// </summary>
+        /// <value>
+        /// The URL.
+        /// </value>
         [J("url")] public string Url { get; set; }
     }
 }

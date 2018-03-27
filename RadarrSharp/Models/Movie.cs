@@ -1,7 +1,7 @@
 ﻿using System;
 using J = Newtonsoft.Json.JsonPropertyAttribute;
 
-namespace RadarrSharp.Endpoints.Movie.Data
+namespace RadarrSharp.Models
 {
     /// <summary>
     /// 
@@ -15,22 +15,6 @@ namespace RadarrSharp.Endpoints.Movie.Data
         /// The title.
         /// </value>
         [J("title")] public string Title { get; set; }
-
-        /// <summary>
-        /// Gets or sets the alternative titles.
-        /// </summary>
-        /// <value>
-        /// The alternative titles.
-        /// </value>
-        [J("alternativeTitles")] public AlternativeTitle[] AlternativeTitles { get; set; }
-
-        /// <summary>
-        /// Gets or sets the secondary year source identifier.
-        /// </summary>
-        /// <value>
-        /// The secondary year source identifier.
-        /// </value>
-        [J("secondaryYearSourceId")] public long SecondaryYearSourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the sort title.
@@ -70,7 +54,7 @@ namespace RadarrSharp.Endpoints.Movie.Data
         /// <value>
         /// The in cinemas.
         /// </value>
-        [J("inCinemas")] public DateTimeOffset? InCinemas { get; set; }
+        [J("inCinemas")] public DateTimeOffset InCinemas { get; set; }
 
         /// <summary>
         /// Gets or sets the images.
@@ -79,6 +63,14 @@ namespace RadarrSharp.Endpoints.Movie.Data
         /// The images.
         /// </value>
         [J("images")] public Image[] Images { get; set; }
+
+        /// <summary>
+        /// Gets or sets the website.
+        /// </summary>
+        /// <value>
+        /// The website.
+        /// </value>
+        [J("website")] public string Website { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="Movie"/> is downloaded.
@@ -137,44 +129,12 @@ namespace RadarrSharp.Endpoints.Movie.Data
         [J("profileId")] public long ProfileId { get; set; }
 
         /// <summary>
-        /// Gets or sets the state of the path.
-        /// </summary>
-        /// <value>
-        /// The state of the path.
-        /// </value>
-        [J("pathState")] public string PathState { get; set; }
-
-        /// <summary>
         /// Gets or sets a value indicating whether this <see cref="Movie"/> is monitored.
         /// </summary>
         /// <value>
         ///   <c>true</c> if monitored; otherwise, <c>false</c>.
         /// </value>
         [J("monitored")] public bool Monitored { get; set; }
-
-        /// <summary>
-        /// Gets or sets the minimum availability.
-        /// </summary>
-        /// <value>
-        /// The minimum availability.
-        /// </value>
-        [J("minimumAvailability")] public string MinimumAvailability { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether this instance is available.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if this instance is available; otherwise, <c>false</c>.
-        /// </value>
-        [J("isAvailable")] public bool IsAvailable { get; set; }
-
-        /// <summary>
-        /// Gets or sets the name of the folder.
-        /// </summary>
-        /// <value>
-        /// The name of the folder.
-        /// </value>
-        [J("folderName")] public string FolderName { get; set; }
 
         /// <summary>
         /// Gets or sets the runtime.
@@ -230,7 +190,7 @@ namespace RadarrSharp.Endpoints.Movie.Data
         /// <value>
         /// The genres.
         /// </value>
-        [J("genres")] public object[] Genres { get; set; }
+        [J("genres")] public string[] Genres { get; set; }
 
         /// <summary>
         /// Gets or sets the tags.
@@ -257,6 +217,14 @@ namespace RadarrSharp.Endpoints.Movie.Data
         [J("ratings")] public Ratings Ratings { get; set; }
 
         /// <summary>
+        /// Gets or sets the alternative titles.
+        /// </summary>
+        /// <value>
+        /// The alternative titles.
+        /// </value>
+        [J("alternativeTitles")] public object[] AlternativeTitles { get; set; }
+
+        /// <summary>
         /// Gets or sets the quality profile identifier.
         /// </summary>
         /// <value>
@@ -271,45 +239,5 @@ namespace RadarrSharp.Endpoints.Movie.Data
         /// The identifier.
         /// </value>
         [J("id")] public long Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the website.
-        /// </summary>
-        /// <value>
-        /// The website.
-        /// </value>
-        [J("website")] public string Website { get; set; }
-
-        /// <summary>
-        /// Gets or sets the movie file.
-        /// </summary>
-        /// <value>
-        /// The movie file.
-        /// </value>
-        [J("movieFile")] public MovieFile MovieFile { get; set; }
-
-        /// <summary>
-        /// Gets or sets the physical release.
-        /// </summary>
-        /// <value>
-        /// The physical release.
-        /// </value>
-        [J("physicalRelease")] public DateTimeOffset? PhysicalRelease { get; set; }
-
-        /// <summary>
-        /// Gets or sets the physical release note.
-        /// </summary>
-        /// <value>
-        /// The physical release note.
-        /// </value>
-        [J("physicalReleaseNote")] public string PhysicalReleaseNote { get; set; }
-
-        /// <summary>
-        /// Gets or sets the secondary year.
-        /// </summary>
-        /// <value>
-        /// The secondary year.
-        /// </value>
-        [J("secondaryYear")] public long? SecondaryYear { get; set; }
     }
 }

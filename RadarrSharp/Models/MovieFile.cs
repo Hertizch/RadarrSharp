@@ -1,7 +1,7 @@
 ﻿using System;
 using J = Newtonsoft.Json.JsonPropertyAttribute;
 
-namespace RadarrSharp.Endpoints.Movie.Data
+namespace RadarrSharp.Models
 {
     /// <summary>
     /// 

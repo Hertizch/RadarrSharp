@@ -12,7 +12,7 @@ namespace RadarrSharp.Endpoints.SystemStatus
         private RadarrClient _radarrClient;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SystemStatus"/> class.
+        /// Initializes a new instance of the <see cref="SystemStatus" /> class.
         /// </summary>
         /// <param name="radarrClient">The radarr client.</param>
         public SystemStatus(RadarrClient radarrClient)
@@ -23,13 +23,15 @@ namespace RadarrSharp.Endpoints.SystemStatus
         /// <summary>
         /// Returns system status
         /// </summary>
-        /// <returns>Data.SystemStatus</returns>
-        public async Task<Data.SystemStatus> GetSystemStatus()
+        /// <returns>
+        /// Models.SystemStatus
+        /// </returns>
+        public async Task<Models.SystemStatus> GetSystemStatus()
         {
             var json = await _radarrClient.GetJson("/system/status");
 
             if (!string.IsNullOrEmpty(json))
-                return JsonConvert.DeserializeObject<Data.SystemStatus>(json, JsonHelpers.SerializerSettings);
+                return JsonConvert.DeserializeObject<Models.SystemStatus>(json, JsonHelpers.SerializerSettings);
 
             return null;
         }
