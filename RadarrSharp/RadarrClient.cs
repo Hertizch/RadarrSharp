@@ -17,7 +17,7 @@ using System.Threading.Tasks;
 namespace RadarrSharp
 {
     /// <summary>
-    /// 
+    /// RadarrClient
     /// </summary>
     public class RadarrClient
     {
@@ -166,7 +166,7 @@ namespace RadarrSharp
         internal async Task<string> GetJson(string endpointUrl)
         {
             if (WriteDebug)
-                Debug.WriteLine($"[{DateTime.Now}] [INFO] [RadarrClient.GetJson] {ApiUrl}{endpointUrl}");
+                Debug.WriteLine($"[RadarrSharp] [DEBUG] [RadarrClient.GetJson] Endpoint URL: '{endpointUrl}'");
 
             var response = string.Empty;
 
@@ -178,17 +178,17 @@ namespace RadarrSharp
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine($"[{DateTime.Now}] [ERROR] [RadarrClient.GetJson] {ex}");
+                    Debug.WriteLine($"[RadarrSharp] [ERROR] [RadarrClient.GetJson] Endpoint URL: '{endpointUrl}', {ex}");
                 }
                 finally
                 {
                     if (WriteDebug)
                     {
-                        Debug.WriteLine($"[{DateTime.Now}] [DEBUG] [RadarrClient.GetJson] Response: {response}");
+                        Debug.WriteLine($"[RadarrSharp] [DEBUG] [RadarrClient.PostJson] Endpoint URL: '{endpointUrl}', response: {response}");
                         var webClientHeaders = _webClient.ResponseHeaders;
                         if (webClientHeaders != null)
                             for (int i = 0; i < webClientHeaders.Count; i++)
-                                Debug.WriteLine($"[{DateTime.Now}] [DEBUG] [RadarrClient.GetJson] Response header: {webClientHeaders.GetKey(i)}={webClientHeaders.Get(i)}");
+                                Debug.WriteLine($"[RadarrSharp] [DEBUG] [RadarrClient.GetJson] Response header: {webClientHeaders.GetKey(i)}={webClientHeaders.Get(i)}");
                     }
                 }
             }
@@ -211,7 +211,7 @@ namespace RadarrSharp
         internal async Task<string> PostJson(string endpointUrl, string data, string method)
         {
             if (WriteDebug)
-                Debug.WriteLine($"[{DateTime.Now}] [INFO] [RadarrClient.PostJson] {ApiUrl}{endpointUrl} - Data: {data}");
+                Debug.WriteLine($"[RadarrSharp] [DEBUG] [RadarrClient.PostJson] {method}: Endpoint URL: '{endpointUrl}', data: '{data}'");
 
             var response = string.Empty;
 
@@ -223,17 +223,17 @@ namespace RadarrSharp
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine($"[{DateTime.Now}] [ERROR] [RadarrClient.PostJson] {ex}");
+                    Debug.WriteLine($"[RadarrSharp] [ERROR] [RadarrClient.PostJson] {method}: Endpoint URL: '{endpointUrl}', data: '{data}', {ex}");
                 }
                 finally
                 {
                     if (WriteDebug)
                     {
-                        Debug.WriteLine($"[{DateTime.Now}] [DEBUG] [RadarrClient.PostJson] Response: {response}");
+                        Debug.WriteLine($"[RadarrSharp] [DEBUG] [RadarrClient.PostJson] {method}: Endpoint URL: '{endpointUrl}', data: '{data}', response: {response}");
                         var webClientHeaders = _webClient.ResponseHeaders;
                         if (webClientHeaders != null)
                             for (int i = 0; i < webClientHeaders.Count; i++)
-                                Debug.WriteLine($"[{DateTime.Now}] [INFO] [RadarrClient.GetJson] Response header: {webClientHeaders.GetKey(i)}={webClientHeaders.Get(i)}");
+                                Debug.WriteLine($"[RadarrSharp] [DEBUG] [RadarrClient.GetJson] Response header: {webClientHeaders.GetKey(i)}={webClientHeaders.Get(i)}");
                     }
                 }
             }
@@ -254,7 +254,7 @@ namespace RadarrSharp
         internal async Task Delete(string endpointUrl)
         {
             if (WriteDebug)
-                Debug.WriteLine($"[{DateTime.Now}] [INFO] [RadarrClient.Delete] {ApiUrl}{endpointUrl}");
+                Debug.WriteLine($"[RadarrSharp] [DEBUG] [RadarrClient.Delete] Endpoint URL: '{endpointUrl}'");
 
             using (var httpClient = new HttpClient { BaseAddress = new Uri(ApiUrl) })
             {
@@ -268,7 +268,7 @@ namespace RadarrSharp
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine($"[{DateTime.Now}] [ERROR] [RadarrClient.Delete] {ex}");
+                    Debug.WriteLine($"[RadarrSharp] [ERROR] [RadarrClient.Delete] Endpoint URL: '{endpointUrl}', {ex}");
                 }
             }
         }

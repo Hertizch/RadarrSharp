@@ -8,12 +8,12 @@ namespace RadarrSharp.Enums
     public enum SortDirection
     {
         /// <summary>
-        /// 
+        /// Ascending sort direction
         /// </summary>
         [Description("Ascending")] Asc,
 
         /// <summary>
-        /// 
+        /// Descending sort direction
         /// </summary>
         [Description("Descending")] Desc
     }

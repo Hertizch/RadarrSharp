@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RadarrSharp.Helpers;
 using System;
-using System.Diagnostics;
 using System.Threading.Tasks;
 
 namespace RadarrSharp.Endpoints.Calendar
@@ -31,7 +30,7 @@ namespace RadarrSharp.Endpoints.Calendar
         public async Task<Models.Calendar[]> GetCalendar()
         {
             var json = await _radarrClient.GetJson($"/calendar");
-            return DeserializeArray(json);
+            return JsonConvert.DeserializeObject<Models.Calendar[]>(json, JsonHelpers.SerializerSettings);
         }
 
         /// <summary>
@@ -45,31 +44,7 @@ namespace RadarrSharp.Endpoints.Calendar
         public async Task<Models.Calendar[]> GetCalendar(DateTime start, DateTime end)
         {
             var json = await _radarrClient.GetJson($"/calendar?start={start.ToString("yyyy-MM-dd")}&end={end.ToString("yyyy-MM-dd")}");
-            return DeserializeArray(json);
-        }
-
-        /// <summary>
-        /// Deserializes the array.
-        /// </summary>
-        /// <param name="json">The json.</param>
-        /// <returns></returns>
-        private static Models.Calendar[] DeserializeArray(string json)
-        {
-            if (string.IsNullOrEmpty(json))
-            {
-                Debug.WriteLine($"[{DateTime.Now}] [ERROR] [{nameof(Calendar)}.{nameof(DeserializeArray)}({json})] JSON is null");
-                return null;
-            }
-
-            try
-            {
-                return JsonConvert.DeserializeObject<Models.Calendar[]>(json, JsonHelpers.SerializerSettings);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"[{DateTime.Now}] [ERROR] [{nameof(Calendar)}.{nameof(DeserializeArray)}({json})] {ex}");
-                return null;
-            }
+            return JsonConvert.DeserializeObject<Models.Calendar[]>(json, JsonHelpers.SerializerSettings);
         }
     }
 }

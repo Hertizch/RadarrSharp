@@ -33,7 +33,7 @@ namespace RadarrSharp.Endpoints.Command
         public async Task<Models.Command[]> GetCommands()
         {
             var json = await _radarrClient.GetJson($"/command");
-            return DeserializeArray(json);
+            return JsonConvert.DeserializeObject<Models.Command[]>(json, JsonHelpers.SerializerSettings);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace RadarrSharp.Endpoints.Command
         public async Task<Models.Command> GetCommand(int id)
         {
             var json = await _radarrClient.GetJson($"/command/{id}");
-            return DeserializeObject(json);
+            return JsonConvert.DeserializeObject<Models.Command>(json, JsonHelpers.SerializerSettings);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace RadarrSharp.Endpoints.Command
             });
 
             var json = await _radarrClient.PostJson("/command", parameter, "POST");
-            return DeserializeObject(json);
+            return JsonConvert.DeserializeObject<Models.Command>(json, JsonHelpers.SerializerSettings);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace RadarrSharp.Endpoints.Command
             });
 
             var json = await _radarrClient.PostJson("/command", parameter, "POST");
-            return DeserializeObject(json);
+            return JsonConvert.DeserializeObject<Models.Command>(json, JsonHelpers.SerializerSettings);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace RadarrSharp.Endpoints.Command
             });
 
             var json = await _radarrClient.PostJson("/command", parameter, "POST");
-            return DeserializeObject(json);
+            return JsonConvert.DeserializeObject<Models.Command>(json, JsonHelpers.SerializerSettings);
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace RadarrSharp.Endpoints.Command
             });
 
             var json = await _radarrClient.PostJson("/command", parameter, "POST");
-            return DeserializeObject(json);
+            return JsonConvert.DeserializeObject<Models.Command>(json, JsonHelpers.SerializerSettings);
         }
 
         /// <summary>
@@ -139,7 +139,7 @@ namespace RadarrSharp.Endpoints.Command
             });
 
             var json = await _radarrClient.PostJson("/command", parameter, "POST");
-            return DeserializeObject(json);
+            return JsonConvert.DeserializeObject<Models.Command>(json, JsonHelpers.SerializerSettings);
         }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace RadarrSharp.Endpoints.Command
             });
 
             var json = await _radarrClient.PostJson("/command", parameter, "POST");
-            return DeserializeObject(json);
+            return JsonConvert.DeserializeObject<Models.Command>(json, JsonHelpers.SerializerSettings);
         }
 
         /// <summary>
@@ -179,7 +179,7 @@ namespace RadarrSharp.Endpoints.Command
             });
 
             var json = await _radarrClient.PostJson("/command", parameter, "POST");
-            return DeserializeObject(json);
+            return JsonConvert.DeserializeObject<Models.Command>(json, JsonHelpers.SerializerSettings);
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace RadarrSharp.Endpoints.Command
             });
 
             var json = await _radarrClient.PostJson("/command", parameter, "POST");
-            return DeserializeObject(json);
+            return JsonConvert.DeserializeObject<Models.Command>(json, JsonHelpers.SerializerSettings);
         }
 
         /// <summary>
@@ -217,55 +217,7 @@ namespace RadarrSharp.Endpoints.Command
             });
 
             var json = await _radarrClient.PostJson("/command", parameter, "POST");
-            return DeserializeObject(json);
-        }
-
-        /// <summary>
-        /// Deserializes the object.
-        /// </summary>
-        /// <param name="json">The json.</param>
-        /// <returns></returns>
-        private static Models.Command DeserializeObject(string json)
-        {
-            if (string.IsNullOrEmpty(json))
-            {
-                Debug.WriteLine($"[{DateTime.Now}] [ERROR] [{nameof(Command)}.{nameof(DeserializeObject)}({json})] JSON is null");
-                return null;
-            }
-
-            try
-            {
-                return JsonConvert.DeserializeObject<Models.Command>(json, JsonHelpers.SerializerSettings);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"[{DateTime.Now}] [ERROR] [{nameof(Command)}.{nameof(DeserializeObject)}({json})] {ex}");
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Deserializes the array.
-        /// </summary>
-        /// <param name="json">The json.</param>
-        /// <returns></returns>
-        private static Models.Command[] DeserializeArray(string json)
-        {
-            if (string.IsNullOrEmpty(json))
-            {
-                Debug.WriteLine($"[{DateTime.Now}] [ERROR] [{nameof(Command)}.{nameof(DeserializeArray)}({json})] JSON is null");
-                return null;
-            }
-
-            try
-            {
-                return JsonConvert.DeserializeObject<Models.Command[]>(json, JsonHelpers.SerializerSettings);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"[{DateTime.Now}] [ERROR] [{nameof(Command)}.{nameof(DeserializeArray)}({json})] {ex}");
-                return null;
-            }
+            return JsonConvert.DeserializeObject<Models.Command>(json, JsonHelpers.SerializerSettings);
         }
     }
 }

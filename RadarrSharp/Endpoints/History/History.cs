@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RadarrSharp.Enums;
 using RadarrSharp.Helpers;
-using System;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
@@ -41,31 +39,7 @@ namespace RadarrSharp.Endpoints.History
                 $"{(sortKey != null ? "&sortKey=" + sortKey : "")}" +
                 $"{(sortDirection != 0 ? "&sortDir=" + sortDirection.ToString().ToLower() : "")}");
 
-            return DeserializeObject(json);
-        }
-
-        /// <summary>
-        /// Deserializes the object.
-        /// </summary>
-        /// <param name="json">The json.</param>
-        /// <returns></returns>
-        private static Models.History DeserializeObject(string json)
-        {
-            if (string.IsNullOrEmpty(json))
-            {
-                Debug.WriteLine($"[{DateTime.Now}] [ERROR] [{nameof(History)}.{nameof(DeserializeObject)}({json})] JSON is null");
-                return null;
-            }
-
-            try
-            {
-                return JsonConvert.DeserializeObject<Models.History>(json, JsonHelpers.SerializerSettings);
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"[{DateTime.Now}] [ERROR] [{nameof(History)}.{nameof(DeserializeObject)}({json})] {ex}");
-                return null;
-            }
+            return JsonConvert.DeserializeObject<Models.History>(json, JsonHelpers.SerializerSettings);
         }
     }
 }

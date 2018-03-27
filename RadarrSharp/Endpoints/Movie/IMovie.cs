@@ -45,7 +45,7 @@ namespace RadarrSharp.Endpoints.Movie
         /// <summary>
         /// Update an existing movie
         /// </summary>
-        /// <param name="movie">Movie to update - Requires all properties of Data.Movie object</param>
+        /// <param name="movie">Movie to update - Requires all properties of Models.Movie object</param>
         /// <returns>
         /// Models.Movie
         /// </returns>
