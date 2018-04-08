@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RadarrSharp.Helpers;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
@@ -33,7 +31,7 @@ namespace RadarrSharp.Endpoints.Movie
         public async Task<Models.Movie[]> GetMovies()
         {
             var json = await _radarrClient.GetJson("/movie");
-            return JsonConvert.DeserializeObject<Models.Movie[]>(json, JsonHelpers.SerializerSettings);
+            return JsonConvert.DeserializeObject<Models.Movie[]>(json, Converter.Settings);
         }
 
         /// <summary>
@@ -46,7 +44,7 @@ namespace RadarrSharp.Endpoints.Movie
         public async Task<Models.Movie> GetMovie(int id)
         {
             var json = await _radarrClient.GetJson($"/movie/id={id}");
-            return JsonConvert.DeserializeObject<Models.Movie>(json, JsonHelpers.SerializerSettings);
+            return JsonConvert.DeserializeObject<Models.Movie>(json, Converter.Settings);
         }
 
         /// <summary>
@@ -82,7 +80,7 @@ namespace RadarrSharp.Endpoints.Movie
             string parameter = JsonConvert.SerializeObject(new Dictionary<string, object>(dictionary));
 
             var json = await _radarrClient.PostJson("/movie", parameter, "POST");
-            return JsonConvert.DeserializeObject<Models.Movie>(json, JsonHelpers.SerializerSettings);
+            return JsonConvert.DeserializeObject<Models.Movie>(json, Converter.Settings);
         }
 
         /// <summary>
@@ -95,7 +93,7 @@ namespace RadarrSharp.Endpoints.Movie
         public async Task<Models.Movie> UpdateMovie(Models.Movie movie)
         {
             var json = await _radarrClient.PostJson("/movie", JsonConvert.SerializeObject(movie), "PUT");
-            return JsonConvert.DeserializeObject<Models.Movie>(json, JsonHelpers.SerializerSettings);
+            return JsonConvert.DeserializeObject<Models.Movie>(json, Converter.Settings);
         }
 
         /// <summary>

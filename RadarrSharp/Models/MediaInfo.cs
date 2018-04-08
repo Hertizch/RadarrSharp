@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RadarrSharp.Enums;
+using System;
 using J = Newtonsoft.Json.JsonPropertyAttribute;
 
 namespace RadarrSharp.Models
@@ -8,7 +9,6 @@ namespace RadarrSharp.Models
     /// </summary>
     public partial class MediaInfo
     {
-
         /// <summary>
         /// Gets or sets the video codec.
         /// </summary>
@@ -143,7 +143,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The type of the scan.
         /// </value>
-        [J("scanType")] public string ScanType { get; set; }
+        [J("scanType")] public ScanType ScanType { get; set; }
 
         /// <summary>
         /// Gets or sets the schema revision.

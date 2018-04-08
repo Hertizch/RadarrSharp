@@ -1,4 +1,5 @@
 ﻿using J = Newtonsoft.Json.JsonPropertyAttribute;
+using N = Newtonsoft.Json.NullValueHandling;
 
 namespace RadarrSharp.Models
 {
@@ -29,6 +30,6 @@ namespace RadarrSharp.Models
         /// <value>
         /// The hardcoded subs.
         /// </value>
-        [J("hardcodedSubs")] public string HardcodedSubs { get; set; }
+        [J("hardcodedSubs", NullValueHandling = N.Ignore)] public string HardcodedSubs { get; set; }
     }
 }

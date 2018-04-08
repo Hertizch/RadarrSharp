@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using RadarrSharp.Enums;
 using RadarrSharp.Helpers;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -28,18 +27,18 @@ namespace RadarrSharp.Endpoints.History
         /// <param name="page">Page</param>
         /// <param name="pageSize">Page size</param>
         /// <param name="sortKey">Movie title or Date</param>
-        /// <param name="sortDirection">Sort direction</param>
+        /// <param name="sortDirection">Sort direction, asc or desc</param>
         /// <returns>
         /// Models.History
         /// </returns>
-        public async Task<Models.History> GetHistory(int page, [Optional] int pageSize, [Optional] string sortKey, [Optional] SortDirection sortDirection)
+        public async Task<Models.History> GetHistory(int page, [Optional] int pageSize, [Optional] string sortKey, [Optional] string sortDirection)
         {
             var json = await _radarrClient.GetJson($"/history?page={page}" +
                 $"{(pageSize != 0 ? "&pageSize=" + pageSize : "")}" +
                 $"{(sortKey != null ? "&sortKey=" + sortKey : "")}" +
-                $"{(sortDirection != 0 ? "&sortDir=" + sortDirection.ToString().ToLower() : "")}");
+                $"{(sortDirection != null ? "&sortDir=" + sortDirection.ToString().ToLower() : "")}");
 
-            return JsonConvert.DeserializeObject<Models.History>(json, JsonHelpers.SerializerSettings);
+            return JsonConvert.DeserializeObject<Models.History>(json, Converter.Settings);
         }
     }
 }

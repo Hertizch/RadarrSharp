@@ -29,7 +29,7 @@ namespace RadarrSharp.Endpoints.Diskspace
         public async Task<Models.Diskspace[]> GetDiskspace()
         {
             var json = await _radarrClient.GetJson("/diskspace");
-            return JsonConvert.DeserializeObject<Models.Diskspace[]>(json, JsonHelpers.SerializerSettings);
+            return JsonConvert.DeserializeObject<Models.Diskspace[]>(json, Converter.Settings);
         }
     }
 }

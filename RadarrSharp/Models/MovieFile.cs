@@ -1,5 +1,6 @@
 ﻿using System;
 using J = Newtonsoft.Json.JsonPropertyAttribute;
+using N = Newtonsoft.Json.NullValueHandling;
 
 namespace RadarrSharp.Models
 {
@@ -46,7 +47,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The name of the scene.
         /// </value>
-        [J("sceneName")] public string SceneName { get; set; }
+        [J("sceneName", NullValueHandling = N.Ignore)] public string SceneName { get; set; }
 
         /// <summary>
         /// Gets or sets the release group.
@@ -54,7 +55,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The release group.
         /// </value>
-        [J("releaseGroup")] public string ReleaseGroup { get; set; }
+        [J("releaseGroup", NullValueHandling = N.Ignore)] public string ReleaseGroup { get; set; }
 
         /// <summary>
         /// Gets or sets the quality.
