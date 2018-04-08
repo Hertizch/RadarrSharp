@@ -31,7 +31,7 @@ namespace RadarrSharp.Endpoints.Command
         public async Task<IList<Models.Command>> GetCommands()
         {
             var json = await _radarrClient.GetJson($"/command");
-            return JsonConvert.DeserializeObject<Models.Command[]>(json, Converter.Settings);
+            return JsonConvert.DeserializeObject<IList<Models.Command>>(json, Converter.Settings);
         }
 
         /// <summary>

@@ -29,7 +29,7 @@ namespace RadarrSharp.Endpoints.Calendar
         public async Task<IList<Models.Calendar>> GetCalendar()
         {
             var json = await _radarrClient.GetJson($"/calendar");
-            return JsonConvert.DeserializeObject<Models.Calendar[]>(json, Converter.Settings);
+            return JsonConvert.DeserializeObject<IList<Models.Calendar>>(json, Converter.Settings);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace RadarrSharp.Endpoints.Calendar
         public async Task<IList<Models.Calendar>> GetCalendar(DateTime start, DateTime end)
         {
             var json = await _radarrClient.GetJson($"/calendar?start={start.ToString("yyyy-MM-dd")}&end={end.ToString("yyyy-MM-dd")}");
-            return JsonConvert.DeserializeObject<Models.Calendar[]>(json, Converter.Settings);
+            return JsonConvert.DeserializeObject<IList<Models.Calendar>>(json, Converter.Settings);
         }
     }
 }

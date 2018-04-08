@@ -29,7 +29,7 @@ namespace RadarrSharp.Endpoints.Movie
         public async Task<IList<Models.Movie>> GetMovies()
         {
             var json = await _radarrClient.GetJson("/movie");
-            return JsonConvert.DeserializeObject<Models.Movie[]>(json, Converter.Settings);
+            return JsonConvert.DeserializeObject<IList<Models.Movie>>(json, Converter.Settings);
         }
 
         /// <summary>
