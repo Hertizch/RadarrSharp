@@ -28,9 +28,7 @@ namespace RadarrSharp.Endpoints.History
         /// <param name="pageSize">Page size - Default 10</param>
         /// <param name="sortKey">Movie title or Date - Default date</param>
         /// <param name="sortDir">Sort direction, asc or desc - Default desc</param>
-        /// <returns>
-        /// Models.History
-        /// </returns>
+        /// <returns></returns>
         public async Task<Models.History> GetHistory(int page = 1, int pageSize = 10, string sortKey = "date", string sortDir = "default")
         {
             var sb = new StringBuilder();

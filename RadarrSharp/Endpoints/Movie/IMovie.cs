@@ -12,18 +12,14 @@ namespace RadarrSharp.Endpoints.Movie
         /// <summary>
         /// Returns all Movies in your collection
         /// </summary>
-        /// <returns>
-        /// Models.Movie[]
-        /// </returns>
-        Task<Models.Movie[]> GetMovies();
+        /// <returns></returns>
+        Task<IList<Models.Movie>> GetMovies();
 
         /// <summary>
         /// Returns the movie with the matching ID
         /// </summary>
         /// <param name="id">Movie ID</param>
-        /// <returns>
-        /// Models.Movie
-        /// </returns>
+        /// <returns></returns>
         Task<Models.Movie> GetMovie(int id);
 
         /// <summary>
@@ -37,18 +33,14 @@ namespace RadarrSharp.Endpoints.Movie
         /// <param name="rootFolderPath">Full path will be created by combining the rootFolderPath with the movie title</param>
         /// <param name="monitored">Is monitored</param>
         /// <param name="addOptions">Usage unknown</param>
-        /// <returns>
-        /// Models.Movie
-        /// </returns>
+        /// <returns></returns>
         Task<Models.Movie> AddMovie(string title, int qualityProfileId, string titleSlug, Models.Image[] images, int tmdbId, string rootFolderPath, [Optional] bool monitored, [Optional] Dictionary<string, bool> addOptions);
 
         /// <summary>
         /// Update an existing movie
         /// </summary>
         /// <param name="movie">Movie to update - Requires all properties of Models.Movie object</param>
-        /// <returns>
-        /// Models.Movie
-        /// </returns>
+        /// <returns></returns>
         Task<Models.Movie> UpdateMovie(Models.Movie movie);
 
         /// <summary>
@@ -56,9 +48,7 @@ namespace RadarrSharp.Endpoints.Movie
         /// </summary>
         /// <param name="id">Movie ID</param>
         /// <param name="deleteFiles">If true the movie folder and all files will be deleted when the movie is deleted</param>
-        /// <returns>
-        /// Nothing
-        /// </returns>
+        /// <returns></returns>
         Task DeleteMovie(int id, [Optional] bool deleteFiles);
     }
 }

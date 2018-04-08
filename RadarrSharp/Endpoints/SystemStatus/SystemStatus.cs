@@ -23,9 +23,7 @@ namespace RadarrSharp.Endpoints.SystemStatus
         /// <summary>
         /// Returns system status
         /// </summary>
-        /// <returns>
-        /// Models.SystemStatus
-        /// </returns>
+        /// <returns></returns>
         public async Task<Models.SystemStatus> GetSystemStatus()
         {
             var json = await _radarrClient.GetJson("/system/status");

@@ -10,9 +10,7 @@ namespace RadarrSharp.Endpoints.SystemStatus
         /// <summary>
         /// Returns system status
         /// </summary>
-        /// <returns>
-        /// Models.SystemStatus
-        /// </returns>
+        /// <returns></returns>
         Task<Models.SystemStatus> GetSystemStatus();
     }
 }

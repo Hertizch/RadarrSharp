@@ -1,5 +1,6 @@
 ﻿using RadarrSharp.Enums;
 using System;
+using System.Collections.Generic;
 using J = Newtonsoft.Json.JsonPropertyAttribute;
 using N = Newtonsoft.Json.NullValueHandling;
 
@@ -24,7 +25,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The alternative titles.
         /// </value>
-        [J("alternativeTitles")] public AlternativeTitle[] AlternativeTitles { get; set; }
+        [J("alternativeTitles")] public IList<AlternativeTitle> AlternativeTitles { get; set; }
 
         /// <summary>
         /// Gets or sets the secondary year source identifier.
@@ -80,7 +81,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The images.
         /// </value>
-        [J("images")] public Image[] Images { get; set; }
+        [J("images")] public IList<Image> Images { get; set; }
 
         /// <summary>
         /// Gets or sets the website.
@@ -240,7 +241,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The genres.
         /// </value>
-        [J("genres")] public object[] Genres { get; set; }
+        [J("genres")] public IList<object> Genres { get; set; }
 
         /// <summary>
         /// Gets or sets the tags.
@@ -248,7 +249,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The tags.
         /// </value>
-        [J("tags")] public object[] Tags { get; set; }
+        [J("tags")] public IList<object> Tags { get; set; }
 
         /// <summary>
         /// Gets or sets the added.

@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using RadarrSharp.Helpers;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace RadarrSharp.Endpoints.Calendar
@@ -24,10 +25,8 @@ namespace RadarrSharp.Endpoints.Calendar
         /// <summary>
         /// Gets upcoming movies, if start/end are not supplied movies airing today and tomorrow will be returned
         /// </summary>
-        /// <returns>
-        /// Models.Calendar[]
-        /// </returns>
-        public async Task<Models.Calendar[]> GetCalendar()
+        /// <returns></returns>
+        public async Task<IList<Models.Calendar>> GetCalendar()
         {
             var json = await _radarrClient.GetJson($"/calendar");
             return JsonConvert.DeserializeObject<Models.Calendar[]>(json, Converter.Settings);
@@ -38,10 +37,8 @@ namespace RadarrSharp.Endpoints.Calendar
         /// </summary>
         /// <param name="start">From date</param>
         /// <param name="end">To date</param>
-        /// <returns>
-        /// Models.Calendar[]
-        /// </returns>
-        public async Task<Models.Calendar[]> GetCalendar(DateTime start, DateTime end)
+        /// <returns></returns>
+        public async Task<IList<Models.Calendar>> GetCalendar(DateTime start, DateTime end)
         {
             var json = await _radarrClient.GetJson($"/calendar?start={start.ToString("yyyy-MM-dd")}&end={end.ToString("yyyy-MM-dd")}");
             return JsonConvert.DeserializeObject<Models.Calendar[]>(json, Converter.Settings);

@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace RadarrSharp.Endpoints.Diskspace
 {
@@ -10,9 +11,7 @@ namespace RadarrSharp.Endpoints.Diskspace
         /// <summary>
         /// Gets information about Diskspace
         /// </summary>
-        /// <returns>
-        /// Models.Diskspace[]
-        /// </returns>
-        Task<Models.Diskspace[]> GetDiskspace();
+        /// <returns></returns>
+        Task<IList<Models.Diskspace>> GetDiskspace();
     }
 }

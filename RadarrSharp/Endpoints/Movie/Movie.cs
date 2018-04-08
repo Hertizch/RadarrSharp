@@ -25,10 +25,8 @@ namespace RadarrSharp.Endpoints.Movie
         /// <summary>
         /// Returns all Movies in your collection
         /// </summary>
-        /// <returns>
-        /// Models.Movie[]
-        /// </returns>
-        public async Task<Models.Movie[]> GetMovies()
+        /// <returns></returns>
+        public async Task<IList<Models.Movie>> GetMovies()
         {
             var json = await _radarrClient.GetJson("/movie");
             return JsonConvert.DeserializeObject<Models.Movie[]>(json, Converter.Settings);
@@ -38,9 +36,7 @@ namespace RadarrSharp.Endpoints.Movie
         /// Returns the movie with the matching ID
         /// </summary>
         /// <param name="id">Movie ID</param>
-        /// <returns>
-        /// Models.Movie
-        /// </returns>
+        /// <returns></returns>
         public async Task<Models.Movie> GetMovie(int id)
         {
             var json = await _radarrClient.GetJson($"/movie/id={id}");
@@ -58,9 +54,7 @@ namespace RadarrSharp.Endpoints.Movie
         /// <param name="rootFolderPath">Root folder path (Full path will be created by combining the rootFolderPath with the movie title)</param>
         /// <param name="monitored">Is monitored</param>
         /// <param name="addOptions">Usage unknown</param>
-        /// <returns>
-        /// Models.Movie
-        /// </returns>
+        /// <returns></returns>
         public async Task<Models.Movie> AddMovie(string title, int qualityProfileId, string titleSlug, Models.Image[] images, int tmdbId, string rootFolderPath, [Optional] bool monitored, [Optional] Dictionary<string, bool> addOptions)
         {
             var dictionary = new Dictionary<string, object>
@@ -87,9 +81,7 @@ namespace RadarrSharp.Endpoints.Movie
         /// Update an existing movie
         /// </summary>
         /// <param name="movie">Movie to update - Requires all properties of Models.Movie object</param>
-        /// <returns>
-        /// Models.Movie
-        /// </returns>
+        /// <returns></returns>
         public async Task<Models.Movie> UpdateMovie(Models.Movie movie)
         {
             var json = await _radarrClient.PostJson("/movie", JsonConvert.SerializeObject(movie), "PUT");
@@ -101,9 +93,7 @@ namespace RadarrSharp.Endpoints.Movie
         /// </summary>
         /// <param name="id">Movie ID</param>
         /// <param name="deleteFiles">If true the movie folder and all files will be deleted when the movie is deleted</param>
-        /// <returns>
-        /// Nothing
-        /// </returns>
+        /// <returns></returns>
         public async Task DeleteMovie(int id, [Optional] bool deleteFiles)
         {
             await _radarrClient.Delete($"/movie/id={id}{(deleteFiles ? $"?deleteFiles={deleteFiles}" : "")}");
