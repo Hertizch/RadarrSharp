@@ -1,5 +1,6 @@
 ﻿using System;
 using J = Newtonsoft.Json.JsonPropertyAttribute;
+using N = Newtonsoft.Json.NullValueHandling;
 
 namespace RadarrSharp.Models
 {
@@ -15,6 +16,22 @@ namespace RadarrSharp.Models
         /// The title.
         /// </value>
         [J("title")] public string Title { get; set; }
+
+        /// <summary>
+        /// Gets or sets the alternative titles.
+        /// </summary>
+        /// <value>
+        /// The alternative titles.
+        /// </value>
+        [J("alternativeTitles")] public AlternativeTitle[] AlternativeTitles { get; set; }
+
+        /// <summary>
+        /// Gets or sets the secondary year source identifier.
+        /// </summary>
+        /// <value>
+        /// The secondary year source identifier.
+        /// </value>
+        [J("secondaryYearSourceId")] public long SecondaryYearSourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the sort title.
@@ -62,7 +79,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The physical release.
         /// </value>
-        [J("physicalRelease")] public DateTimeOffset PhysicalRelease { get; set; }
+        [J("physicalRelease", NullValueHandling = N.Ignore)] public DateTimeOffset? PhysicalRelease { get; set; }
 
         /// <summary>
         /// Gets or sets the images.
@@ -78,7 +95,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The website.
         /// </value>
-        [J("website")] public string Website { get; set; }
+        [J("website", NullValueHandling = N.Ignore)] public string Website { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="Calendar"/> is downloaded.
@@ -110,7 +127,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// You tube trailer identifier.
         /// </value>
-        [J("youTubeTrailerId")] public string YouTubeTrailerId { get; set; }
+        [J("youTubeTrailerId", NullValueHandling = N.Ignore)] public string YouTubeTrailerId { get; set; }
 
         /// <summary>
         /// Gets or sets the studio.
@@ -118,7 +135,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The studio.
         /// </value>
-        [J("studio")] public string Studio { get; set; }
+        [J("studio", NullValueHandling = N.Ignore)] public string Studio { get; set; }
 
         /// <summary>
         /// Gets or sets the path.
@@ -137,12 +154,44 @@ namespace RadarrSharp.Models
         [J("profileId")] public long ProfileId { get; set; }
 
         /// <summary>
+        /// Gets or sets the state of the path.
+        /// </summary>
+        /// <value>
+        /// The state of the path.
+        /// </value>
+        [J("pathState")] public string PathState { get; set; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether this <see cref="Calendar"/> is monitored.
         /// </summary>
         /// <value>
         ///   <c>true</c> if monitored; otherwise, <c>false</c>.
         /// </value>
         [J("monitored")] public bool Monitored { get; set; }
+
+        /// <summary>
+        /// Gets or sets the minimum availability.
+        /// </summary>
+        /// <value>
+        /// The minimum availability.
+        /// </value>
+        [J("minimumAvailability")] public string MinimumAvailability { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance is available.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance is available; otherwise, <c>false</c>.
+        /// </value>
+        [J("isAvailable")] public bool IsAvailable { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the folder.
+        /// </summary>
+        /// <value>
+        /// The name of the folder.
+        /// </value>
+        [J("folderName")] public string FolderName { get; set; }
 
         /// <summary>
         /// Gets or sets the runtime.
@@ -198,7 +247,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The genres.
         /// </value>
-        [J("genres")] public string[] Genres { get; set; }
+        [J("genres")] public object[] Genres { get; set; }
 
         /// <summary>
         /// Gets or sets the tags.
@@ -225,14 +274,6 @@ namespace RadarrSharp.Models
         [J("ratings")] public Ratings Ratings { get; set; }
 
         /// <summary>
-        /// Gets or sets the alternative titles.
-        /// </summary>
-        /// <value>
-        /// The alternative titles.
-        /// </value>
-        [J("alternativeTitles")] public string[] AlternativeTitles { get; set; }
-
-        /// <summary>
         /// Gets or sets the quality profile identifier.
         /// </summary>
         /// <value>
@@ -247,5 +288,13 @@ namespace RadarrSharp.Models
         /// The identifier.
         /// </value>
         [J("id")] public long Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the movie file.
+        /// </summary>
+        /// <value>
+        /// The movie file.
+        /// </value>
+        [J("movieFile", NullValueHandling = N.Ignore)] public MovieFile MovieFile { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RadarrSharp.Helpers;
-using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace RadarrSharp.Endpoints.History
@@ -24,19 +24,23 @@ namespace RadarrSharp.Endpoints.History
         /// <summary>
         /// Gets history (grabs/failures/completed)
         /// </summary>
-        /// <param name="page">Page</param>
-        /// <param name="pageSize">Page size</param>
-        /// <param name="sortKey">Movie title or Date</param>
-        /// <param name="sortDirection">Sort direction, asc or desc</param>
+        /// <param name="page">Page - Default 1</param>
+        /// <param name="pageSize">Page size - Default 10</param>
+        /// <param name="sortKey">Movie title or Date - Default date</param>
+        /// <param name="sortDir">Sort direction, asc or desc - Default desc</param>
         /// <returns>
         /// Models.History
         /// </returns>
-        public async Task<Models.History> GetHistory(int page, [Optional] int pageSize, [Optional] string sortKey, [Optional] string sortDirection)
+        public async Task<Models.History> GetHistory(int page = 1, int pageSize = 10, string sortKey = "date", string sortDir = "default")
         {
-            var json = await _radarrClient.GetJson($"/history?page={page}" +
-                $"{(pageSize != 0 ? "&pageSize=" + pageSize : "")}" +
-                $"{(sortKey != null ? "&sortKey=" + sortKey : "")}" +
-                $"{(sortDirection != null ? "&sortDir=" + sortDirection.ToString().ToLower() : "")}");
+            var sb = new StringBuilder();
+
+            sb.Append($"?page={page}");
+            sb.Append($"&pageSize={pageSize}");
+            sb.Append($"&sortKey={sortKey}");
+            sb.Append($"&sortDir={sortDir}");
+
+            var json = await _radarrClient.GetJson($"/history{sb.ToString()}");
 
             return JsonConvert.DeserializeObject<Models.History>(json, Converter.Settings);
         }

@@ -15,12 +15,14 @@ namespace RadarrSharp.Helpers
             t == typeof(ScanType) ||
             t == typeof(PathState) ||
             t == typeof(Status) ||
-            
+            t == typeof(SourceType) ||
+
             t == typeof(CoverType?) ||
             t == typeof(MinimumAvailability?) ||
             t == typeof(ScanType?) ||
             t == typeof(PathState?) ||
-            t == typeof(Status?);
+            t == typeof(Status?) ||
+            t == typeof(SourceType?);
 
         public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
         {
@@ -34,6 +36,8 @@ namespace RadarrSharp.Helpers
                 return PathStateExtensions.ReadJson(reader, serializer);
             if (t == typeof(Status))
                 return StatusExtensions.ReadJson(reader, serializer);
+            if (t == typeof(SourceType))
+                return SourceTypeExtensions.ReadJson(reader, serializer);
 
             if (t == typeof(CoverType?))
             {
@@ -60,6 +64,12 @@ namespace RadarrSharp.Helpers
                 if (reader.TokenType == JsonToken.Null) return null;
                 return StatusExtensions.ReadJson(reader, serializer);
             }
+            if (t == typeof(SourceType?))
+            {
+                if (reader.TokenType == JsonToken.Null) return null;
+                return SourceTypeExtensions.ReadJson(reader, serializer);
+            }
+
             throw new Exception("Unknown type");
         }
 
@@ -92,6 +102,12 @@ namespace RadarrSharp.Helpers
                 ((Status)value).WriteJson(writer, serializer);
                 return;
             }
+            if (t == typeof(SourceType))
+            {
+                ((SourceType)value).WriteJson(writer, serializer);
+                return;
+            }
+
             throw new Exception("Unknown type");
         }
 

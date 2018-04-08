@@ -1,5 +1,6 @@
 ﻿using System;
 using J = Newtonsoft.Json.JsonPropertyAttribute;
+using N = Newtonsoft.Json.NullValueHandling;
 
 namespace RadarrSharp.Models
 {
@@ -9,28 +10,12 @@ namespace RadarrSharp.Models
     public partial class Record
     {
         /// <summary>
-        /// Gets or sets the episode identifier.
-        /// </summary>
-        /// <value>
-        /// The episode identifier.
-        /// </value>
-        [J("episodeId")] public long EpisodeId { get; set; }
-
-        /// <summary>
         /// Gets or sets the movie identifier.
         /// </summary>
         /// <value>
         /// The movie identifier.
         /// </value>
         [J("movieId")] public long MovieId { get; set; }
-
-        /// <summary>
-        /// Gets or sets the series identifier.
-        /// </summary>
-        /// <value>
-        /// The series identifier.
-        /// </value>
-        [J("seriesId")] public long SeriesId { get; set; }
 
         /// <summary>
         /// Gets or sets the source title.
@@ -70,7 +55,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The download identifier.
         /// </value>
-        [J("downloadId")] public string DownloadId { get; set; }
+        [J("downloadId", NullValueHandling = N.Ignore)] public string DownloadId { get; set; }
 
         /// <summary>
         /// Gets or sets the type of the event.

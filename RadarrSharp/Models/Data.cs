@@ -1,5 +1,6 @@
 ﻿using System;
 using J = Newtonsoft.Json.JsonPropertyAttribute;
+using N = Newtonsoft.Json.NullValueHandling;
 
 namespace RadarrSharp.Models
 {
@@ -14,7 +15,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The indexer.
         /// </value>
-        [J("indexer")] public string Indexer { get; set; }
+        [J("indexer", NullValueHandling = N.Ignore)] public string Indexer { get; set; }
 
         /// <summary>
         /// Gets or sets the NZB information URL.
@@ -22,7 +23,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The NZB information URL.
         /// </value>
-        [J("nzbInfoUrl")] public string NzbInfoUrl { get; set; }
+        [J("nzbInfoUrl", NullValueHandling = N.Ignore)] public string NzbInfoUrl { get; set; }
 
         /// <summary>
         /// Gets or sets the release group.
@@ -30,7 +31,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The release group.
         /// </value>
-        [J("releaseGroup")] public string ReleaseGroup { get; set; }
+        [J("releaseGroup", NullValueHandling = N.Ignore)] public string ReleaseGroup { get; set; }
 
         /// <summary>
         /// Gets or sets the age.
@@ -38,7 +39,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The age.
         /// </value>
-        [J("age")] public string Age { get; set; }
+        [J("age", NullValueHandling = N.Ignore)] public string Age { get; set; }
 
         /// <summary>
         /// Gets or sets the age hours.
@@ -46,7 +47,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The age hours.
         /// </value>
-        [J("ageHours")] public string AgeHours { get; set; }
+        [J("ageHours", NullValueHandling = N.Ignore)] public string AgeHours { get; set; }
 
         /// <summary>
         /// Gets or sets the age minutes.
@@ -54,7 +55,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The age minutes.
         /// </value>
-        [J("ageMinutes")] public string AgeMinutes { get; set; }
+        [J("ageMinutes", NullValueHandling = N.Ignore)] public string AgeMinutes { get; set; }
 
         /// <summary>
         /// Gets or sets the published date.
@@ -62,7 +63,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The published date.
         /// </value>
-        [J("publishedDate")] public DateTimeOffset PublishedDate { get; set; }
+        [J("publishedDate", NullValueHandling = N.Ignore)] public DateTimeOffset? PublishedDate { get; set; }
 
         /// <summary>
         /// Gets or sets the download client.
@@ -70,7 +71,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The download client.
         /// </value>
-        [J("downloadClient")] public string DownloadClient { get; set; }
+        [J("downloadClient", NullValueHandling = N.Ignore)] public string DownloadClient { get; set; }
 
         /// <summary>
         /// Gets or sets the size.
@@ -78,7 +79,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The size.
         /// </value>
-        [J("size")] public string Size { get; set; }
+        [J("size", NullValueHandling = N.Ignore)] public string Size { get; set; }
 
         /// <summary>
         /// Gets or sets the download URL.
@@ -86,7 +87,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The download URL.
         /// </value>
-        [J("downloadUrl")] public string DownloadUrl { get; set; }
+        [J("downloadUrl", NullValueHandling = N.Ignore)] public string DownloadUrl { get; set; }
 
         /// <summary>
         /// Gets or sets the unique identifier.
@@ -94,7 +95,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The unique identifier.
         /// </value>
-        [J("guid")] public string Guid { get; set; }
+        [J("guid", NullValueHandling = N.Ignore)] public string Guid { get; set; }
 
         /// <summary>
         /// Gets or sets the TVDB identifier.
@@ -102,7 +103,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The TVDB identifier.
         /// </value>
-        [J("tvdbId")] public string TvdbId { get; set; }
+        [J("tvdbId", NullValueHandling = N.Ignore)] public string TvdbId { get; set; }
 
         /// <summary>
         /// Gets or sets the tv rage identifier.
@@ -110,7 +111,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The tv rage identifier.
         /// </value>
-        [J("tvRageId")] public string TvRageId { get; set; }
+        [J("tvRageId", NullValueHandling = N.Ignore)] public string TvRageId { get; set; }
 
         /// <summary>
         /// Gets or sets the protocol.
@@ -118,7 +119,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The protocol.
         /// </value>
-        [J("protocol")] public string Protocol { get; set; }
+        [J("protocol", NullValueHandling = N.Ignore)] public string Protocol { get; set; }
 
         /// <summary>
         /// Gets or sets the torrent information hash.
@@ -126,6 +127,38 @@ namespace RadarrSharp.Models
         /// <value>
         /// The torrent information hash.
         /// </value>
-        [J("torrentInfoHash")] public object TorrentInfoHash { get; set; }
+        [J("torrentInfoHash", NullValueHandling = N.Ignore)] public string TorrentInfoHash { get; set; }
+
+        /// <summary>
+        /// Gets or sets the dropped path.
+        /// </summary>
+        /// <value>
+        /// The dropped path.
+        /// </value>
+        [J("droppedPath", NullValueHandling = N.Ignore)] public string DroppedPath { get; set; }
+
+        /// <summary>
+        /// Gets or sets the imported path.
+        /// </summary>
+        /// <value>
+        /// The imported path.
+        /// </value>
+        [J("importedPath", NullValueHandling = N.Ignore)] public string ImportedPath { get; set; }
+
+        /// <summary>
+        /// Gets or sets the reason.
+        /// </summary>
+        /// <value>
+        /// The reason.
+        /// </value>
+        [J("reason", NullValueHandling = N.Ignore)] public string Reason { get; set; }
+
+        /// <summary>
+        /// Gets or sets the message.
+        /// </summary>
+        /// <value>
+        /// The message.
+        /// </value>
+        [J("message", NullValueHandling = N.Ignore)] public string Message { get; set; }
     }
 }

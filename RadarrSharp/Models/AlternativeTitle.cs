@@ -1,4 +1,5 @@
-﻿using J = Newtonsoft.Json.JsonPropertyAttribute;
+﻿using RadarrSharp.Enums;
+using J = Newtonsoft.Json.JsonPropertyAttribute;
 
 namespace RadarrSharp.Models
 {
@@ -13,7 +14,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The type of the source.
         /// </value>
-        [J("sourceType")] public string SourceType { get; set; }
+        [J("sourceType")] public SourceType SourceType { get; set; }
 
         /// <summary>
         /// Gets or sets the movie identifier.
