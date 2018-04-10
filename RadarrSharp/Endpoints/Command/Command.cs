@@ -89,7 +89,7 @@ namespace RadarrSharp.Endpoints.Command
             var parameter = JsonConvert.SerializeObject(new Dictionary<string, object>
             {
                 ["name"] = "moviesSearch",
-                ["movieIds "] = movieIds
+                ["movieIds"] = movieIds
             });
 
             var json = await _radarrClient.PostJson("/command", parameter, "POST");
