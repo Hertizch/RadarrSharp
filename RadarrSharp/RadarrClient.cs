@@ -3,6 +3,7 @@ using RadarrSharp.Endpoints.Command;
 using RadarrSharp.Endpoints.Diskspace;
 using RadarrSharp.Endpoints.History;
 using RadarrSharp.Endpoints.Movie;
+using RadarrSharp.Endpoints.Profile;
 using RadarrSharp.Endpoints.SystemStatus;
 using RadarrSharp.Helpers;
 using System;
@@ -50,6 +51,7 @@ namespace RadarrSharp
             History = new History(this);
             Movie = new Movie(this);
             SystemStatus = new SystemStatus(this);
+            Profile = new Profile(this);
         }
 
         /// <summary>
@@ -155,6 +157,14 @@ namespace RadarrSharp
         /// The system status.
         /// </value>
         public ISystemStatus SystemStatus { get; }
+
+        /// <summary>
+        /// Profile endpoint client
+        /// </summary>
+        /// <value>
+        /// The profile.
+        /// </value>
+        public IProfile Profile { get; }
 
         /// <summary>
         /// Gets the GET response as a json formatted string
