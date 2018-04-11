@@ -1,8 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RadarrSharp.Helpers;
-using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
@@ -55,7 +53,7 @@ namespace RadarrSharp.Endpoints.Command
             var parameter = JsonConvert.SerializeObject(new Dictionary<string, object>
             {
                 ["name"] = "refreshMovie",
-                ["movieId "] = movieId
+                ["movieId"] = movieId
             });
 
             var json = await _radarrClient.PostJson("/command", parameter, "POST");
@@ -138,7 +136,7 @@ namespace RadarrSharp.Endpoints.Command
             var parameter = JsonConvert.SerializeObject(new Dictionary<string, object>
             {
                 ["name"] = "renameMovies",
-                ["movieIds "] = movieIds
+                ["movieIds"] = movieIds
             });
 
             var json = await _radarrClient.PostJson("/command", parameter, "POST");
