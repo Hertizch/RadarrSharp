@@ -5,6 +5,7 @@ using RadarrSharp.Endpoints.History;
 using RadarrSharp.Endpoints.Movie;
 using RadarrSharp.Endpoints.Profile;
 using RadarrSharp.Endpoints.SystemStatus;
+using RadarrSharp.Endpoints.Wanted;
 using RadarrSharp.Helpers;
 using System;
 using System.Diagnostics;
@@ -52,6 +53,7 @@ namespace RadarrSharp
             Movie = new Movie(this);
             SystemStatus = new SystemStatus(this);
             Profile = new Profile(this);
+            Wanted = new Wanted(this);
         }
 
         /// <summary>
@@ -165,6 +167,14 @@ namespace RadarrSharp
         /// The profile.
         /// </value>
         public IProfile Profile { get; }
+
+        /// <summary>
+        /// Wanted endpoint client
+        /// </summary>
+        /// <value>
+        /// The wanted.
+        /// </value>
+        public IWanted Wanted { get; }
 
         /// <summary>
         /// Gets the GET response as a json formatted string
