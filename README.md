@@ -24,9 +24,9 @@ var radarrClient = new RadarrClient("127.0.0.1", 8989, "apiKey");
 Get all movies:
 ```c#
 var movies = await radarrClient.Movie.GetMovies();
-foreach (var movie in movies)
+foreach (var item in movies)
 {
-    Console.WriteLine($"{movie.Title}");
+    Console.WriteLine($"{item.Title}");
 }
 ```
 
