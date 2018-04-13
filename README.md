@@ -1,5 +1,5 @@
 # RadarrSharp
-C# Radarr API wrapper. Still in a beta phase, all methods and properties are subject to change.
+C# [Radarr](https://radarr.video/) API wrapper. Still in a beta phase so all methods and properties are subject to change. Some methods are yet to be implemented.
 
 ## Compatibility
 Written as a .NET Standard library, so should be compatible with .NET framework, .NET core and Xamarin.
