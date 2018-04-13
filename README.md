@@ -2,13 +2,16 @@
 C# Radarr API wrapper. Still in a beta phase, all methods and properties are subject to change.
 
 ## Compatibility
-.NET framework, .NET core and Xamarin
+Written as a .NET Standard library, so should be compatible with .NET framework, .NET core and Xamarin.
 
 ## Installation
 Available as a NuGet package:
 ```
 PM> Install-Package RadarrSharp
 ```
+
+## Known Issues
+- UpdateMovie method not working.
 
 ## Usage
 These are some examples on how to use the API. All methods are async/awaitable. Most methods includes help text on what they do. If you need more information on how the various endpoints works, visit https://github.com/Radarr/Radarr/wiki/API.
