@@ -34,13 +34,3 @@ var command = await.sonarrClient.Command.MoviesSearch(new int[] { 123, 456, 789 
 // Get status of command
 Console.WriteLine($"{command.Name}: {command.State}");
 ```
-
-## Changelog
-### March 22, 2018
-- Corrected and added missing properties for Movie endpoint
-
-### March 27, 2018
-- Merged all endpoint properties to central folder. Removed duplicates.
-- Added summary for all endpoint properties.
-- Other minor changes.
-- Added a 'WriteDebug' option - writes addition information to Debug.
