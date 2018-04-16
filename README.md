@@ -15,28 +15,28 @@ PM> Install-Package RadarrSharp
 
 ## Available Endpoints:
 **Calendar:**
-*Gets upcoming movies*
+>Returns upcoming movies
 
 **Command:**
-*Initiate movie search, refresh, rss sync, rename etc.*
+>Initiate movie search, refresh, rss sync, rename etc.
 
 **Diskspace:**
-*Gets information about Diskspace*
+>Returns information about Diskspace
 
 **History:**
-*Gets history (grabs/failures/completed)*
+>Returns history (grabs/failures/completed)
 
 **Movie:**
-*Get, update, delete or add movies*
+>Get, update, delete or add movies
 
 **Profile:**
-*Gets all quality profiles*
+>Gets all quality profiles
 
 **SystemStatus:**
-*Returns system status*
+>Returns system status
 
 **Wanted:**
-*Returns missing, and movies that has not achieved it's cutoff quality.
+>Returns missing, and movies that has not achieved it's cutoff quality.
 
 ## Usage
 These are some examples on how to use the API. All methods are async/awaitable. Most methods includes help text on what they do. If you need more information on how the various endpoints works, visit https://github.com/Radarr/Radarr/wiki/API.
