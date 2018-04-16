@@ -2,6 +2,7 @@
 using RadarrSharp.Endpoints.Command;
 using RadarrSharp.Endpoints.Diskspace;
 using RadarrSharp.Endpoints.History;
+using RadarrSharp.Endpoints.Log;
 using RadarrSharp.Endpoints.Movie;
 using RadarrSharp.Endpoints.Profile;
 using RadarrSharp.Endpoints.SystemStatus;
@@ -54,6 +55,7 @@ namespace RadarrSharp
             SystemStatus = new SystemStatus(this);
             Profile = new Profile(this);
             Wanted = new Wanted(this);
+            Log = new Log(this);
         }
 
         /// <summary>
@@ -175,6 +177,14 @@ namespace RadarrSharp
         /// The wanted.
         /// </value>
         public IWanted Wanted { get; }
+
+        /// <summary>
+        /// Log endpoint client
+        /// </summary>
+        /// <value>
+        /// The log.
+        /// </value>
+        public ILog Log { get; }
 
         /// <summary>
         /// Gets the GET response as a json formatted string
