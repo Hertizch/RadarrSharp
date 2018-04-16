@@ -43,7 +43,7 @@ These are some examples on how to use the API. All methods are async/awaitable. 
 
 Create the client:
 ```c#
-var radarrClient = new RadarrClient("127.0.0.1", 8989, "apiKey");
+var radarrClient = new RadarrClient("127.0.0.1", 7878, "apiKey");
 ```
 
 Get all movies:
