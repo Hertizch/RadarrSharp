@@ -18,6 +18,7 @@ namespace RadarrSharp.Helpers
             t == typeof(SourceType) ||
             t == typeof(Level) ||
             t == typeof(Protocol) ||
+            t == typeof(MappingResult) ||
 
             t == typeof(CoverType?) ||
             t == typeof(MinimumAvailability?) ||
@@ -26,7 +27,8 @@ namespace RadarrSharp.Helpers
             t == typeof(Status?) ||
             t == typeof(SourceType?) ||
             t == typeof(Level?) ||
-            t == typeof(Protocol?);
+            t == typeof(Protocol?) ||
+            t == typeof(MappingResult?);
 
         public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
         {
@@ -46,6 +48,8 @@ namespace RadarrSharp.Helpers
                 return LevelExtensions.ReadJson(reader, serializer);
             if (t == typeof(Protocol))
                 return ProtocolExtensions.ReadJson(reader, serializer);
+            if (t == typeof(MappingResult))
+                return MappingResultExtensions.ReadJson(reader, serializer);
 
             if (t == typeof(CoverType?))
             {
@@ -86,6 +90,11 @@ namespace RadarrSharp.Helpers
             {
                 if (reader.TokenType == JsonToken.Null) return null;
                 return ProtocolExtensions.ReadJson(reader, serializer);
+            }
+            if (t == typeof(MappingResult?))
+            {
+                if (reader.TokenType == JsonToken.Null) return null;
+                return MappingResultExtensions.ReadJson(reader, serializer);
             }
 
             throw new Exception("Unknown type");
@@ -133,6 +142,11 @@ namespace RadarrSharp.Helpers
             if (t == typeof(Protocol))
             {
                 ((Protocol)value).WriteJson(writer, serializer);
+                return;
+            }
+            if (t == typeof(MappingResult))
+            {
+                ((MappingResult)value).WriteJson(writer, serializer);
                 return;
             }
 
