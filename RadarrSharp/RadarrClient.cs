@@ -5,6 +5,7 @@ using RadarrSharp.Endpoints.History;
 using RadarrSharp.Endpoints.Log;
 using RadarrSharp.Endpoints.Movie;
 using RadarrSharp.Endpoints.Profile;
+using RadarrSharp.Endpoints.Queue;
 using RadarrSharp.Endpoints.SystemStatus;
 using RadarrSharp.Endpoints.Wanted;
 using RadarrSharp.Helpers;
@@ -56,6 +57,7 @@ namespace RadarrSharp
             Profile = new Profile(this);
             Wanted = new Wanted(this);
             Log = new Log(this);
+            Queue = new Queue(this);
         }
 
         /// <summary>
@@ -185,6 +187,14 @@ namespace RadarrSharp
         /// The log.
         /// </value>
         public ILog Log { get; }
+
+        /// <summary>
+        /// Queue endpoint client
+        /// </summary>
+        /// <value>
+        /// The queue.
+        /// </value>
+        public IQueue Queue { get; }
 
         /// <summary>
         /// Gets the GET response as a json formatted string
