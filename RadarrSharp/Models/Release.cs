@@ -2,6 +2,7 @@
 using J = Newtonsoft.Json.JsonPropertyAttribute;
 using N = Newtonsoft.Json.NullValueHandling;
 using RadarrSharp.Enums;
+using System.Collections.Generic;
 
 namespace RadarrSharp.Models
 {
@@ -152,7 +153,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The episode numbers.
         /// </value>
-        [J("episodeNumbers")] public object[] EpisodeNumbers { get; set; }
+        [J("episodeNumbers")] public IList<object> EpisodeNumbers { get; set; }
 
         /// <summary>
         /// Gets or sets the absolute episode numbers.
@@ -160,7 +161,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The absolute episode numbers.
         /// </value>
-        [J("absoluteEpisodeNumbers")] public object[] AbsoluteEpisodeNumbers { get; set; }
+        [J("absoluteEpisodeNumbers")] public IList<object> AbsoluteEpisodeNumbers { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="Release"/> is approved.
@@ -208,7 +209,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The rejections.
         /// </value>
-        [J("rejections")] public string[] Rejections { get; set; }
+        [J("rejections")] public IList<string> Rejections { get; set; }
 
         /// <summary>
         /// Gets or sets the publish date.
@@ -272,7 +273,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The indexer flags.
         /// </value>
-        [J("indexerFlags")] public string[] IndexerFlags { get; set; }
+        [J("indexerFlags")] public IList<string> IndexerFlags { get; set; }
 
         /// <summary>
         /// Gets or sets the magnet URL.
