@@ -12,6 +12,7 @@ namespace RadarrSharp.Extensions
             {
                 case "banner": return CoverType.Banner;
                 case "poster": return CoverType.Poster;
+                case "fanart": return CoverType.FanArt;
                 default: return null;
             }
         }
@@ -30,6 +31,7 @@ namespace RadarrSharp.Extensions
             {
                 case CoverType.Banner: serializer.Serialize(writer, "banner"); break;
                 case CoverType.Poster: serializer.Serialize(writer, "poster"); break;
+                case CoverType.FanArt: serializer.Serialize(writer, "fanart"); break;
             }
         }
     }

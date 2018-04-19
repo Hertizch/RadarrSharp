@@ -13,6 +13,11 @@
         /// <summary>
         /// The poster
         /// </summary>
-        Poster
+        Poster,
+
+        /// <summary>
+        /// The fan art
+        /// </summary>
+        FanArt
     };
 }
