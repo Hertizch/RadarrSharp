@@ -38,6 +38,12 @@ PM> Install-Package RadarrSharp
 **Wanted:**
 >Returns missing, and movies that has not achieved it's cutoff quality.
 
+**Queue:**
+>Returns currently downloading info
+
+**Release:**
+>Returns releases from Radarr's search cache
+
 ## Usage
 These are some examples on how to use the API. All methods are async/awaitable. Most methods includes help text on what they do. If you need more information on how the various endpoints works, visit https://github.com/Radarr/Radarr/wiki/API.
 
@@ -57,8 +63,17 @@ foreach (var item in movies)
 
 Search for movies:
 ```c#
-var command = await.sonarrClient.Command.MoviesSearch(new int[] { 123, 456, 789 });
+var command = await radarrClient.Command.MoviesSearch(new int[] { 123, 456, 789 });
 
 // Get status of command
 Console.WriteLine($"{command.Name}: {command.State}");
+```
+
+Get downloading movies:
+```c#
+var queue = await radarrClient.Queue.GetQueue();
+foreach (var item in queue)
+{
+    Console.WriteLine($"{item.Status}: {item.Title}");
+}
 ```
