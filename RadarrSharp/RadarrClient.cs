@@ -5,6 +5,7 @@ using RadarrSharp.Endpoints.History;
 using RadarrSharp.Endpoints.Log;
 using RadarrSharp.Endpoints.Movie;
 using RadarrSharp.Endpoints.Profile;
+using RadarrSharp.Endpoints.QualityDefinition;
 using RadarrSharp.Endpoints.Queue;
 using RadarrSharp.Endpoints.Release;
 using RadarrSharp.Endpoints.SystemStatus;
@@ -60,6 +61,7 @@ namespace RadarrSharp
             Log = new Log(this);
             Queue = new Queue(this);
             Release = new Release(this);
+            QualityDefinition = new QualityDefinition(this);
         }
 
         /// <summary>
@@ -205,6 +207,14 @@ namespace RadarrSharp
         /// The release.
         /// </value>
         public IRelease Release { get; }
+
+        /// <summary>
+        /// QualityDefinition endpoint client
+        /// </summary>
+        /// <value>
+        /// The quality definition.
+        /// </value>
+        public IQualityDefinition QualityDefinition { get; }
 
         /// <summary>
         /// Gets the GET response as a json formatted string
