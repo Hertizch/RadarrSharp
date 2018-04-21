@@ -2,6 +2,7 @@
 using RadarrSharp.Helpers;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace RadarrSharp.Endpoints.Movie
@@ -30,6 +31,26 @@ namespace RadarrSharp.Endpoints.Movie
         {
             var json = await _radarrClient.GetJson("/movie");
             return JsonConvert.DeserializeObject<IList<Models.Movie>>(json, Converter.Settings);
+        }
+
+        /// <summary>
+        /// Returns all Movies, with pagination, in your collection
+        /// </summary>
+        /// <param name="page">Page - Default 1</param>
+        /// <param name="pageSize">Page size - Default 10</param>
+        /// <param name="sortKey">Sort key, id, title or date - Default id</param>
+        /// <param name="sortDir">Sort direction, asc or desc - Default asc</param>
+        /// <returns></returns>
+        public async Task<Models.MoviePage> GetMoviesPaged(int page = 1, int pageSize = 10, string sortKey = "id", string sortDir = "default")
+        {
+            var sb = new StringBuilder();
+            sb.Append($"?page={page}");
+            sb.Append($"&pageSize={pageSize}");
+            sb.Append($"&sortKey={sortKey}");
+            sb.Append($"&sortDir={sortDir}");
+
+            var json = await _radarrClient.GetJson($"/movie{sb.ToString()}");
+            return JsonConvert.DeserializeObject<Models.MoviePage>(json, Converter.Settings);
         }
 
         /// <summary>

@@ -16,6 +16,16 @@ namespace RadarrSharp.Endpoints.Movie
         Task<IList<Models.Movie>> GetMovies();
 
         /// <summary>
+        /// Returns all Movies, with pagination, in your collection
+        /// </summary>
+        /// <param name="page">Page - Default 1</param>
+        /// <param name="pageSize">Page size - Default 10</param>
+        /// <param name="sortKey">Sort key, id, title or date - Default id</param>
+        /// <param name="sortDir">Sort direction, asc or desc - Default asc</param>
+        /// <returns></returns>
+        Task<Models.MoviePage> GetMoviesPaged(int page = 1, int pageSize = 10, string sortKey = "id", string sortDir = "default");
+
+        /// <summary>
         /// Returns the movie with the matching ID
         /// </summary>
         /// <param name="id">Movie ID</param>
