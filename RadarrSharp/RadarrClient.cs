@@ -9,6 +9,7 @@ using RadarrSharp.Endpoints.Profile;
 using RadarrSharp.Endpoints.QualityDefinition;
 using RadarrSharp.Endpoints.Queue;
 using RadarrSharp.Endpoints.Release;
+using RadarrSharp.Endpoints.Restriction;
 using RadarrSharp.Endpoints.SystemStatus;
 using RadarrSharp.Endpoints.Wanted;
 using RadarrSharp.Helpers;
@@ -64,6 +65,7 @@ namespace RadarrSharp
             Release = new Release(this);
             QualityDefinition = new QualityDefinition(this);
             Indexer = new Indexer(this);
+            Restriction = new Restriction(this);
         }
 
         /// <summary>
@@ -225,6 +227,14 @@ namespace RadarrSharp
         /// The indexer.
         /// </value>
         public IIndexer Indexer { get; }
+
+        /// <summary>
+        /// Restriction endpoint client
+        /// </summary>
+        /// <value>
+        /// The restriction.
+        /// </value>
+        public IRestriction Restriction { get; }
 
         /// <summary>
         /// Gets the GET response as a json formatted string
