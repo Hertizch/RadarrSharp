@@ -2,6 +2,7 @@
 using RadarrSharp.Endpoints.Command;
 using RadarrSharp.Endpoints.Diskspace;
 using RadarrSharp.Endpoints.History;
+using RadarrSharp.Endpoints.Indexer;
 using RadarrSharp.Endpoints.Log;
 using RadarrSharp.Endpoints.Movie;
 using RadarrSharp.Endpoints.Profile;
@@ -62,6 +63,7 @@ namespace RadarrSharp
             Queue = new Queue(this);
             Release = new Release(this);
             QualityDefinition = new QualityDefinition(this);
+            Indexer = new Indexer(this);
         }
 
         /// <summary>
@@ -215,6 +217,14 @@ namespace RadarrSharp
         /// The quality definition.
         /// </value>
         public IQualityDefinition QualityDefinition { get; }
+
+        /// <summary>
+        /// Indexer endpoint client
+        /// </summary>
+        /// <value>
+        /// The indexer.
+        /// </value>
+        public IIndexer Indexer { get; }
 
         /// <summary>
         /// Gets the GET response as a json formatted string
