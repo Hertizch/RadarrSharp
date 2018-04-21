@@ -38,6 +38,8 @@ PM> Install-Package RadarrSharp
 
 >**Indexer:** Returns configured indexers
 
+>**Restriction:** Get, update and create restrictions
+
 ## Usage
 These are some examples on how to use the API. All methods are async/awaitable. Most methods includes help text on what they do. If you need more information on how the various endpoints works, visit https://github.com/Radarr/Radarr/wiki/API.
 
