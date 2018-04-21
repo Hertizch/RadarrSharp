@@ -34,6 +34,14 @@ namespace RadarrSharp.Models
         [J("label")] public string Label { get; set; }
 
         /// <summary>
+        /// Gets or sets the help link.
+        /// </summary>
+        /// <value>
+        /// The help link.
+        /// </value>
+        [J("helpLink", NullValueHandling = N.Ignore)] public string HelpLink { get; set; }
+
+        /// <summary>
         /// Gets or sets the value.
         /// </summary>
         /// <value>

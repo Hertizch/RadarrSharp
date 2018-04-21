@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Converters;
 using RadarrSharp.Enums;
 using RadarrSharp.Extensions;
+using RadarrSharp.Models;
 using System;
 using System.Globalization;
 
@@ -19,6 +20,7 @@ namespace RadarrSharp.Helpers
             t == typeof(Level) ||
             t == typeof(Protocol) ||
             t == typeof(MappingResult) ||
+            t == typeof(Value) ||
 
             t == typeof(CoverType?) ||
             t == typeof(MinimumAvailability?) ||
@@ -28,7 +30,8 @@ namespace RadarrSharp.Helpers
             t == typeof(SourceType?) ||
             t == typeof(Level?) ||
             t == typeof(Protocol?) ||
-            t == typeof(MappingResult?);
+            t == typeof(MappingResult?) ||
+            t == typeof(Value?);
 
         public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
         {
@@ -50,6 +53,8 @@ namespace RadarrSharp.Helpers
                 return ProtocolExtensions.ReadJson(reader, serializer);
             if (t == typeof(MappingResult))
                 return MappingResultExtensions.ReadJson(reader, serializer);
+            if (t == typeof(Value) || t == typeof(Value?))
+                return new Value(reader, serializer);
 
             if (t == typeof(CoverType?))
             {
@@ -147,6 +152,11 @@ namespace RadarrSharp.Helpers
             if (t == typeof(MappingResult))
             {
                 ((MappingResult)value).WriteJson(writer, serializer);
+                return;
+            }
+            if (t == typeof(Value))
+            {
+                ((Value)value).WriteJson(writer, serializer);
                 return;
             }
 

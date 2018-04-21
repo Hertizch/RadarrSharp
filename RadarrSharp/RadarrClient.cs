@@ -6,6 +6,7 @@ using RadarrSharp.Endpoints.History;
 using RadarrSharp.Endpoints.Indexer;
 using RadarrSharp.Endpoints.Log;
 using RadarrSharp.Endpoints.Movie;
+using RadarrSharp.Endpoints.Notification;
 using RadarrSharp.Endpoints.Profile;
 using RadarrSharp.Endpoints.QualityDefinition;
 using RadarrSharp.Endpoints.Queue;
@@ -68,6 +69,7 @@ namespace RadarrSharp
             Indexer = new Indexer(this);
             Restriction = new Restriction(this);
             Blacklist = new Blacklist(this);
+            Notification = new Notification(this);
         }
 
         /// <summary>
@@ -245,6 +247,14 @@ namespace RadarrSharp
         /// The blacklist.
         /// </value>
         public IBlacklist Blacklist { get; }
+
+        /// <summary>
+        /// Notification endpoint client
+        /// </summary>
+        /// <value>
+        /// The notification.
+        /// </value>
+        public INotification Notification { get; }
 
         /// <summary>
         /// Gets the GET response as a json formatted string
