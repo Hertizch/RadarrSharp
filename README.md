@@ -14,35 +14,29 @@ PM> Install-Package RadarrSharp
 - UpdateMovie method not working. Returns server exception. Under investigation.
 
 ## Available Endpoints:
-**Calendar:**
->Returns upcoming movies
+>**Calendar:** Returns upcoming movies
 
-**Command:**
->Initiate movie search, refresh, rss sync, rename etc.
+>**Command:** Initiate movie search, refresh, rss sync, rename etc.
 
-**Diskspace:**
->Returns information about Diskspace
+>**Diskspace:** Returns information about Diskspace
 
-**History:**
->Returns history (grabs/failures/completed)
+>**History:** Returns history (grabs/failures/completed)
 
-**Movie:**
->Get, update, delete or add movies
+>**Movie:** Get, update, delete or add movies
 
-**Profile:**
->Gets all quality profiles
+>**Profile:** Gets all quality profiles
 
-**SystemStatus:**
->Returns system status
+>**SystemStatus:** Returns system status
 
-**Wanted:**
->Returns missing, and movies that has not achieved it's cutoff quality.
+>**Wanted:** Returns missing, and movies that has not achieved it's cutoff quality.
 
-**Queue:**
->Returns currently downloading info
+>**Queue:** Returns currently downloading info
 
-**Release:**
->Returns releases from Radarr's search cache
+>**Release:** Returns releases from Radarr's search cache
+
+>**QualityDefinition:** Returns quality definitions
+
+>**Indexer:** Returns configured indexers
 
 ## Usage
 These are some examples on how to use the API. All methods are async/awaitable. Most methods includes help text on what they do. If you need more information on how the various endpoints works, visit https://github.com/Radarr/Radarr/wiki/API.
