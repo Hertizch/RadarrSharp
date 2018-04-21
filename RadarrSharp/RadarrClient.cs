@@ -1,4 +1,5 @@
-﻿using RadarrSharp.Endpoints.Calendar;
+﻿using RadarrSharp.Endpoints.Blacklist;
+using RadarrSharp.Endpoints.Calendar;
 using RadarrSharp.Endpoints.Command;
 using RadarrSharp.Endpoints.Diskspace;
 using RadarrSharp.Endpoints.History;
@@ -66,6 +67,7 @@ namespace RadarrSharp
             QualityDefinition = new QualityDefinition(this);
             Indexer = new Indexer(this);
             Restriction = new Restriction(this);
+            Blacklist = new Blacklist(this);
         }
 
         /// <summary>
@@ -235,6 +237,14 @@ namespace RadarrSharp
         /// The restriction.
         /// </value>
         public IRestriction Restriction { get; }
+
+        /// <summary>
+        /// Blacklist endpoint client
+        /// </summary>
+        /// <value>
+        /// The blacklist.
+        /// </value>
+        public IBlacklist Blacklist { get; }
 
         /// <summary>
         /// Gets the GET response as a json formatted string
