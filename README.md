@@ -34,6 +34,10 @@ PM> Install-Package RadarrSharp
 
 >**Release:** Returns releases from Radarr's search cache
 
+>**QualityDefinition:** Returns quality definitions
+
+>**Indexer:** Returns configured indexers
+
 ## Usage
 These are some examples on how to use the API. All methods are async/awaitable. Most methods includes help text on what they do. If you need more information on how the various endpoints works, visit https://github.com/Radarr/Radarr/wiki/API.
 
