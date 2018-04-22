@@ -12,6 +12,7 @@ using RadarrSharp.Endpoints.QualityDefinition;
 using RadarrSharp.Endpoints.Queue;
 using RadarrSharp.Endpoints.Release;
 using RadarrSharp.Endpoints.Restriction;
+using RadarrSharp.Endpoints.RootFolder;
 using RadarrSharp.Endpoints.SystemStatus;
 using RadarrSharp.Endpoints.Wanted;
 using RadarrSharp.Helpers;
@@ -70,6 +71,7 @@ namespace RadarrSharp
             Restriction = new Restriction(this);
             Blacklist = new Blacklist(this);
             Notification = new Notification(this);
+            RootFolder = new RootFolder(this);
         }
 
         /// <summary>
@@ -255,6 +257,14 @@ namespace RadarrSharp
         /// The notification.
         /// </value>
         public INotification Notification { get; }
+
+        /// <summary>
+        /// RootFolder endpoint client
+        /// </summary>
+        /// <value>
+        /// The root folder.
+        /// </value>
+        public IRootFolder RootFolder { get; }
 
         /// <summary>
         /// Gets the GET response as a json formatted string

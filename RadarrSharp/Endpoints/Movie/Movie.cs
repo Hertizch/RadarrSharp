@@ -118,7 +118,7 @@ namespace RadarrSharp.Endpoints.Movie
         /// Delete the movie with the given ID
         /// </summary>
         /// <param name="id">Movie ID</param>
-        /// <param name="deleteFiles">If true the movie folder and all files will be deleted when the movie is deleted</param>
+        /// <param name="deleteFiles">If true the movie folder and all files will be deleted when the movie is deleted - Default false</param>
         /// <returns></returns>
         public async Task DeleteMovie(int id, [Optional] bool deleteFiles)
         {
