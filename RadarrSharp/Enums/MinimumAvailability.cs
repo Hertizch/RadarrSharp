@@ -16,6 +16,16 @@
         Released,
 
         /// <summary>
+        /// The in cinemas
+        /// </summary>
+        InCinemas,
+
+        /// <summary>
+        /// The pre database
+        /// </summary>
+        PreDb,
+
+        /// <summary>
         /// The tba
         /// </summary>
         Tba

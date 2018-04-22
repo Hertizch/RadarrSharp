@@ -18,6 +18,11 @@
         /// <summary>
         /// The released
         /// </summary>
-        Released
+        Released,
+
+        /// <summary>
+        /// The tba
+        /// </summary>
+        Tba
     };
 }

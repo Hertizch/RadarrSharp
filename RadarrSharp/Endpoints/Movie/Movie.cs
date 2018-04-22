@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using RadarrSharp.Enums;
 using RadarrSharp.Helpers;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -68,24 +69,28 @@ namespace RadarrSharp.Endpoints.Movie
         /// Adds a new movie to your collection
         /// </summary>
         /// <param name="title">Title</param>
+        /// <param name="year">Release year</param>
         /// <param name="qualityProfileId">Quality profile ID</param>
         /// <param name="titleSlug">Title slug</param>
         /// <param name="images">Images array</param>
         /// <param name="tmdbId">TMDb ID</param>
         /// <param name="rootFolderPath">Root folder path (Full path will be created by combining the rootFolderPath with the movie title)</param>
+        /// <param name="minimumAvailability">Minimum availability</param>
         /// <param name="monitored">Is monitored</param>
-        /// <param name="addOptions">Usage unknown</param>
+        /// <param name="addOptions">Object that contains one boolean property</param>
         /// <returns></returns>
-        public async Task<Models.Movie> AddMovie(string title, int qualityProfileId, string titleSlug, Models.Image[] images, int tmdbId, string rootFolderPath, [Optional] bool monitored, [Optional] Dictionary<string, bool> addOptions)
+        public async Task<Models.Movie> AddMovie(string title, int year, int qualityProfileId, string titleSlug, List<Models.Image> images, int tmdbId, string rootFolderPath, MinimumAvailability minimumAvailability, [Optional] bool monitored, [Optional] AddOptions addOptions)
         {
             var dictionary = new Dictionary<string, object>
             {
                 ["title"] = title,
+                ["year"] = year,
                 ["qualityProfileId"] = qualityProfileId,
                 ["titleSlug"] = titleSlug,
                 ["images"] = images,
                 ["tmdbId"] = tmdbId,
                 ["rootFolderPath"] = rootFolderPath,
+                ["minimumAvailability"] = minimumAvailability.ToString(),
                 ["monitored"] = monitored
             };
 

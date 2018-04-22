@@ -13,6 +13,7 @@ namespace RadarrSharp.Extensions
                 case "announced": return Status.Announced;
                 case "inCinemas": return Status.InCinemas;
                 case "released": return Status.Released;
+                case "tba": return Status.Tba;
                 default: return null;
             }
         }
@@ -32,6 +33,7 @@ namespace RadarrSharp.Extensions
                 case Status.Announced: serializer.Serialize(writer, "announced"); break;
                 case Status.InCinemas: serializer.Serialize(writer, "inCinemas"); break;
                 case Status.Released: serializer.Serialize(writer, "released"); break;
+                case Status.Tba: serializer.Serialize(writer, "tba"); break;
             }
         }
     }

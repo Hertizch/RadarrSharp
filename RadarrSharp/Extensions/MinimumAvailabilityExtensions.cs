@@ -11,6 +11,8 @@ namespace RadarrSharp.Extensions
             switch (str)
             {
                 case "announced": return MinimumAvailability.Announced;
+                case "inCinemas": return MinimumAvailability.InCinemas;
+                case "preDB": return MinimumAvailability.PreDb;
                 case "released": return MinimumAvailability.Released;
                 case "tba": return MinimumAvailability.Tba;
                 default: return null;
@@ -30,6 +32,8 @@ namespace RadarrSharp.Extensions
             switch (value)
             {
                 case MinimumAvailability.Announced: serializer.Serialize(writer, "announced"); break;
+                case MinimumAvailability.InCinemas: serializer.Serialize(writer, "inCinemas"); break;
+                case MinimumAvailability.PreDb: serializer.Serialize(writer, "preDB"); break;
                 case MinimumAvailability.Released: serializer.Serialize(writer, "released"); break;
                 case MinimumAvailability.Tba: serializer.Serialize(writer, "tba"); break;
             }
