@@ -48,7 +48,7 @@ namespace RadarrSharp.Endpoints.Restriction
         /// <returns></returns>
         public async Task<Models.Restriction> UpdateRestriction(Models.Restriction restriction)
         {
-            var json = await _radarrClient.PostJson("/restriction", JsonConvert.SerializeObject(restriction), "PUT");
+            var json = await _radarrClient.PostJson("/restriction", JsonConvert.SerializeObject(restriction, Converter.Settings), "PUT");
             return JsonConvert.DeserializeObject<Models.Restriction>(json, Converter.Settings);
         }
 

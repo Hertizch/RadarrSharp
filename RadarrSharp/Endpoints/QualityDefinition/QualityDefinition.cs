@@ -48,7 +48,7 @@ namespace RadarrSharp.Endpoints.QualityDefinition
         /// <returns></returns>
         public async Task<Models.QualityDefinition> UpdateQualityDefinition(Models.QualityDefinition qualityDefinition)
         {
-            var json = await _radarrClient.PostJson("/qualityDefinition", JsonConvert.SerializeObject(qualityDefinition), "PUT");
+            var json = await _radarrClient.PostJson("/qualityDefinition", JsonConvert.SerializeObject(qualityDefinition, Converter.Settings), "PUT");
             return JsonConvert.DeserializeObject<Models.QualityDefinition>(json, Converter.Settings);
         }
     }
