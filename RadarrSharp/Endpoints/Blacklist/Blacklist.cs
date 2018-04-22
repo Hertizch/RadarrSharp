@@ -29,7 +29,7 @@ namespace RadarrSharp.Endpoints.Blacklist
         public async Task<Models.Blacklist> GetBlacklist(int page = 1, int pageSize = 10)
         {
             var json = await _radarrClient.GetJson($"/blacklist?page={page}&pageSize={pageSize}");
-            return JsonConvert.DeserializeObject<Models.Blacklist>(json, Converter.Settings);
+            return await Task.Run(() => JsonConvert.DeserializeObject<Models.Blacklist>(json, Converter.Settings));
         }
 
         /// <summary>

@@ -28,7 +28,7 @@ namespace RadarrSharp.Endpoints.Indexer
         public async Task<IList<Models.Indexer>> GetIndexers()
         {
             var json = await _radarrClient.GetJson("/indexer");
-            return JsonConvert.DeserializeObject<IList<Models.Indexer>>(json, Converter.Settings);
+            return await Task.Run(() => JsonConvert.DeserializeObject<IList<Models.Indexer>>(json, Converter.Settings));
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace RadarrSharp.Endpoints.Indexer
         public async Task<Models.Indexer> GetIndexer(int id)
         {
             var json = await _radarrClient.GetJson($"/indexer/id={id}");
-            return JsonConvert.DeserializeObject<Models.Indexer>(json, Converter.Settings);
+            return await Task.Run(() => JsonConvert.DeserializeObject<Models.Indexer>(json, Converter.Settings));
         }
     }
 }

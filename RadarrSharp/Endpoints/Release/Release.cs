@@ -28,11 +28,7 @@ namespace RadarrSharp.Endpoints.Release
         public async Task<IList<Models.Release>> GetReleases()
         {
             var json = await _radarrClient.GetJson($"/release");
-
-            if (!string.IsNullOrEmpty(json))
-                return JsonConvert.DeserializeObject<IList<Models.Release>>(json, Converter.Settings);
-
-            return null;
+            return await Task.Run(() => JsonConvert.DeserializeObject<IList<Models.Release>>(json, Converter.Settings));
         }
 
         /// <summary>
@@ -48,11 +44,7 @@ namespace RadarrSharp.Endpoints.Release
             });
 
             var json = await _radarrClient.PostJson($"/release", parameter, "POST");
-
-            if (!string.IsNullOrEmpty(json))
-                return JsonConvert.DeserializeObject<IList<Models.Release>>(json, Converter.Settings);
-
-            return null;
+            return await Task.Run(() => JsonConvert.DeserializeObject<IList<Models.Release>>(json, Converter.Settings));
         }
     }
 }

@@ -28,7 +28,7 @@ namespace RadarrSharp.Endpoints.QualityDefinition
         public async Task<IList<Models.QualityDefinition>> GetQualityDefinitions()
         {
             var json = await _radarrClient.GetJson("/qualityDefinition");
-            return JsonConvert.DeserializeObject<IList<Models.QualityDefinition>>(json, Converter.Settings);
+            return await Task.Run(() => JsonConvert.DeserializeObject<IList<Models.QualityDefinition>>(json, Converter.Settings));
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace RadarrSharp.Endpoints.QualityDefinition
         public async Task<Models.QualityDefinition> GetQualityDefinition(int id)
         {
             var json = await _radarrClient.GetJson($"/qualityDefinition/id={id}");
-            return JsonConvert.DeserializeObject<Models.QualityDefinition>(json, Converter.Settings);
+            return await Task.Run(() => JsonConvert.DeserializeObject<Models.QualityDefinition>(json, Converter.Settings));
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace RadarrSharp.Endpoints.QualityDefinition
         public async Task<Models.QualityDefinition> UpdateQualityDefinition(Models.QualityDefinition qualityDefinition)
         {
             var json = await _radarrClient.PostJson("/qualityDefinition", JsonConvert.SerializeObject(qualityDefinition, Converter.Settings), "PUT");
-            return JsonConvert.DeserializeObject<Models.QualityDefinition>(json, Converter.Settings);
+            return await Task.Run(() => JsonConvert.DeserializeObject<Models.QualityDefinition>(json, Converter.Settings));
         }
     }
 }

@@ -29,7 +29,7 @@ namespace RadarrSharp.Endpoints.Command
         public async Task<IList<Models.Command>> GetCommands()
         {
             var json = await _radarrClient.GetJson($"/command");
-            return JsonConvert.DeserializeObject<IList<Models.Command>>(json, Converter.Settings);
+            return await Task.Run(() => JsonConvert.DeserializeObject<IList<Models.Command>>(json, Converter.Settings));
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace RadarrSharp.Endpoints.Command
         public async Task<Models.Command> GetCommand(int id)
         {
             var json = await _radarrClient.GetJson($"/command/{id}");
-            return JsonConvert.DeserializeObject<Models.Command>(json, Converter.Settings);
+            return await Task.Run(() => JsonConvert.DeserializeObject<Models.Command>(json, Converter.Settings));
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace RadarrSharp.Endpoints.Command
             });
 
             var json = await _radarrClient.PostJson("/command", parameter, "POST");
-            return JsonConvert.DeserializeObject<Models.Command>(json, Converter.Settings);
+            return await Task.Run(() => JsonConvert.DeserializeObject<Models.Command>(json, Converter.Settings));
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace RadarrSharp.Endpoints.Command
             });
 
             var json = await _radarrClient.PostJson("/command", parameter, "POST");
-            return JsonConvert.DeserializeObject<Models.Command>(json, Converter.Settings);
+            return await Task.Run(() => JsonConvert.DeserializeObject<Models.Command>(json, Converter.Settings));
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace RadarrSharp.Endpoints.Command
             });
 
             var json = await _radarrClient.PostJson("/command", parameter, "POST");
-            return JsonConvert.DeserializeObject<Models.Command>(json, Converter.Settings);
+            return await Task.Run(() => JsonConvert.DeserializeObject<Models.Command>(json, Converter.Settings));
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace RadarrSharp.Endpoints.Command
             });
 
             var json = await _radarrClient.PostJson("/command", parameter, "POST");
-            return JsonConvert.DeserializeObject<Models.Command>(json, Converter.Settings);
+            return await Task.Run(() => JsonConvert.DeserializeObject<Models.Command>(json, Converter.Settings));
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace RadarrSharp.Endpoints.Command
             });
 
             var json = await _radarrClient.PostJson("/command", parameter, "POST");
-            return JsonConvert.DeserializeObject<Models.Command>(json, Converter.Settings);
+            return await Task.Run(() => JsonConvert.DeserializeObject<Models.Command>(json, Converter.Settings));
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace RadarrSharp.Endpoints.Command
             });
 
             var json = await _radarrClient.PostJson("/command", parameter, "POST");
-            return JsonConvert.DeserializeObject<Models.Command>(json, Converter.Settings);
+            return await Task.Run(() => JsonConvert.DeserializeObject<Models.Command>(json, Converter.Settings));
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace RadarrSharp.Endpoints.Command
             });
 
             var json = await _radarrClient.PostJson("/command", parameter, "POST");
-            return JsonConvert.DeserializeObject<Models.Command>(json, Converter.Settings);
+            return await Task.Run(() => JsonConvert.DeserializeObject<Models.Command>(json, Converter.Settings));
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace RadarrSharp.Endpoints.Command
             });
 
             var json = await _radarrClient.PostJson("/command", parameter, "POST");
-            return JsonConvert.DeserializeObject<Models.Command>(json, Converter.Settings);
+            return await Task.Run(() => JsonConvert.DeserializeObject<Models.Command>(json, Converter.Settings));
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace RadarrSharp.Endpoints.Command
             });
 
             var json = await _radarrClient.PostJson("/command", parameter, "POST");
-            return JsonConvert.DeserializeObject<Models.Command>(json, Converter.Settings);
+            return await Task.Run(() => JsonConvert.DeserializeObject<Models.Command>(json, Converter.Settings));
         }
     }
 }

@@ -30,12 +30,11 @@ namespace RadarrSharp.Endpoints.Wanted
         public async Task<Models.Wanted> GetCutoffUnmet(int page = 1, int pageSize = 100)
         {
             var sb = new StringBuilder();
-
             sb.Append($"?page={page}");
             sb.Append($"&pageSize={pageSize}");
 
             var json = await _radarrClient.GetJson($"/wanted/cutoff{sb.ToString()}");
-            return JsonConvert.DeserializeObject<Models.Wanted>(json, Converter.Settings);
+            return await Task.Run(() => JsonConvert.DeserializeObject<Models.Wanted>(json, Converter.Settings));
         }
 
         /// <summary>
@@ -47,12 +46,11 @@ namespace RadarrSharp.Endpoints.Wanted
         public async Task<Models.Wanted> GetMissing(int page = 1, int pageSize = 100)
         {
             var sb = new StringBuilder();
-
             sb.Append($"?page={page}");
             sb.Append($"&pageSize={pageSize}");
 
             var json = await _radarrClient.GetJson($"/wanted/missing{sb.ToString()}");
-            return JsonConvert.DeserializeObject<Models.Wanted>(json, Converter.Settings);
+            return await Task.Run(() => JsonConvert.DeserializeObject<Models.Wanted>(json, Converter.Settings));
         }
     }
 }

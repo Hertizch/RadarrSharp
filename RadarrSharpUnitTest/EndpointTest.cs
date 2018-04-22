@@ -62,5 +62,19 @@ namespace RadarrSharpUnitTest
 
             var obj = await _radarrClient.Movie.UpdateMovie(movie);
         }*/
+
+        [TestMethod]
+        public async Task SearchForMovieByImdbId()
+        {
+            var obj = await _radarrClient.Movie.SearchForMovieByImdbId("tt0859635");
+            Assert.IsNotNull(obj);
+        }
+
+        [TestMethod]
+        public async Task DiscoverMovies()
+        {
+            var obj = await _radarrClient.Movie.DiscoverMovies();
+            Assert.IsNotNull(obj);
+        }
     }
 }
