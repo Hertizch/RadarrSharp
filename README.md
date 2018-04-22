@@ -22,7 +22,7 @@ PM> Install-Package RadarrSharp
 
 >**History:** Returns history (grabs/failures/completed)
 
->**Movie:** Get, update, delete or add movies
+>**Movie:** Get, update, delete, search or add movies
 
 >**Profile:** Gets all quality profiles
 
