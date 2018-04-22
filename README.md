@@ -11,7 +11,7 @@ PM> Install-Package RadarrSharp
 ```
 
 ## Known Issues
-- UpdateMovie method not working. Returns server exception. Under investigation.
+- None ATM.
 
 ## Available Endpoints:
 >**Calendar:** Returns upcoming movies
