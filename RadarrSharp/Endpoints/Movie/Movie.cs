@@ -124,5 +124,38 @@ namespace RadarrSharp.Endpoints.Movie
         {
             await _radarrClient.Delete($"/movie/id={id}{(deleteFiles ? $"?deleteFiles={deleteFiles}" : "")}");
         }
+
+        /// <summary>
+        /// Search for movie by title
+        /// </summary>
+        /// <param name="title">Search title</param>
+        /// <returns></returns>
+        public async Task<IList<Models.Movie>> SearchForMovie(string title)
+        {
+            var json = await _radarrClient.GetJson($"/movie/lookup?term={title.Replace(" ", "%20")}");
+            return JsonConvert.DeserializeObject<IList<Models.Movie>>(json, Converter.Settings);
+        }
+
+        /// <summary>
+        /// Search for movie by IMDb ID
+        /// </summary>
+        /// <param name="imdbId">IMDb ID</param>
+        /// <returns></returns>
+        public async Task<IList<Models.Movie>> SearchForMovieByImdbId(string imdbId)
+        {
+            var json = await _radarrClient.GetJson($"/movie/lookup?term=imdb:{imdbId}");
+            return JsonConvert.DeserializeObject<IList<Models.Movie>>(json, Converter.Settings);
+        }
+
+        /// <summary>
+        /// Discover new movies
+        /// </summary>
+        /// <param name="movieDiscoverAction">Movie discover action - Default recommendations</param>
+        /// <returns></returns>
+        public async Task<IList<Models.Movie>> DiscoverMovies([Optional] MovieDiscoverAction movieDiscoverAction)
+        {
+            var json = await _radarrClient.GetJson($"/movies/discover{(movieDiscoverAction != 0 ? $"/{movieDiscoverAction.ToString()}" : "")}");
+            return JsonConvert.DeserializeObject<IList<Models.Movie>>(json, Converter.Settings);
+        }
     }
 }

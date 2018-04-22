@@ -63,5 +63,26 @@ namespace RadarrSharp.Endpoints.Movie
         /// <param name="deleteFiles">If true the movie folder and all files will be deleted when the movie is deleted</param>
         /// <returns></returns>
         Task DeleteMovie(int id, [Optional] bool deleteFiles);
+
+        /// <summary>
+        /// Search for movie by title
+        /// </summary>
+        /// <param name="title">Search title</param>
+        /// <returns></returns>
+        Task<IList<Models.Movie>> SearchForMovie(string title);
+
+        /// <summary>
+        /// Search for movie by IMDb ID
+        /// </summary>
+        /// <param name="imdbId">IMDb ID</param>
+        /// <returns></returns>
+        Task<IList<Models.Movie>> SearchForMovieByImdbId(string imdbId);
+
+        /// <summary>
+        /// Discover new movies
+        /// </summary>
+        /// <param name="movieDiscoverAction">Movie discover action - Default recommendations</param>
+        /// <returns></returns>
+        Task<IList<Models.Movie>> DiscoverMovies([Optional] MovieDiscoverAction movieDiscoverAction);
     }
 }
