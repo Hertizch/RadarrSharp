@@ -8,6 +8,11 @@
         /// <summary>
         /// The static
         /// </summary>
-        Static
+        Static,
+
+        /// <summary>
+        /// The dynamic
+        /// </summary>
+        Dynamic
     };
 }

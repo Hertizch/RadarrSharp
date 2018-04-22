@@ -11,6 +11,7 @@ namespace RadarrSharp.Extensions
             switch (str)
             {
                 case "static": return PathState.Static;
+                case "dynamic": return PathState.Dynamic;
                 default: return null;
             }
         }
@@ -28,6 +29,7 @@ namespace RadarrSharp.Extensions
             switch (value)
             {
                 case PathState.Static: serializer.Serialize(writer, "static"); break;
+                case PathState.Dynamic: serializer.Serialize(writer, "dynamic"); break;
             }
         }
     }

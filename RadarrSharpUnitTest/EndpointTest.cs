@@ -27,7 +27,7 @@ namespace RadarrSharpUnitTest
             Assert.IsNotNull(obj);
         }
 
-        [TestMethod]
+        /*[TestMethod]
         public async Task AddMovie()
         {
             string title = "Super Troopers 2";
@@ -52,6 +52,15 @@ namespace RadarrSharpUnitTest
 
             var obj = await _radarrClient.Movie.AddMovie(title, year, qualityProfileId, titleSlug, images, tmdbId, rootFolderPath, minimumAvailability, monitored, addOptions);
             Assert.IsNotNull(obj);
-        }
+        }*/
+
+        /*[TestMethod]
+        public async Task UpdateMovie()
+        {
+            var movie = await _radarrClient.Movie.GetMovie(747);
+            movie.Monitored = true;
+
+            var obj = await _radarrClient.Movie.UpdateMovie(movie);
+        }*/
     }
 }

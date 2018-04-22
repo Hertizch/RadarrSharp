@@ -110,7 +110,7 @@ namespace RadarrSharp.Endpoints.Movie
         /// <returns></returns>
         public async Task<Models.Movie> UpdateMovie(Models.Movie movie)
         {
-            var json = await _radarrClient.PostJson("/movie", JsonConvert.SerializeObject(movie), "PUT");
+            var json = await _radarrClient.PostJson("/movie", JsonConvert.SerializeObject(movie, Converter.Settings), "PUT");
             return JsonConvert.DeserializeObject<Models.Movie>(json, Converter.Settings);
         }
 
