@@ -26,7 +26,7 @@ namespace RadarrSharp.Endpoints.SystemStatus
         /// <returns></returns>
         public async Task<Models.SystemStatus> GetSystemStatus()
         {
-            var json = await _radarrClient.GetJson("/system/status");
+            var json = await _radarrClient.ProcessJson("GET", "/system/status");
             return await Task.Run(() => JsonConvert.DeserializeObject<Models.SystemStatus>(json, Converter.Settings));
         }
     }

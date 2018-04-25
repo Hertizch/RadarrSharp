@@ -49,7 +49,7 @@ namespace RadarrSharp.Endpoints.Wanted
             sb.Append($"?page={page}");
             sb.Append($"&pageSize={pageSize}");
 
-            var json = await _radarrClient.GetJson($"/wanted/missing{sb.ToString()}");
+            var json = await _radarrClient.ProcessJson("GET", $"/wanted/missing{sb.ToString()}");
             return await Task.Run(() => JsonConvert.DeserializeObject<Models.Wanted>(json, Converter.Settings));
         }
     }

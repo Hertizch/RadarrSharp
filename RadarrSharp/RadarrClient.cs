@@ -283,99 +283,6 @@ namespace RadarrSharp
         public IConfig Config { get; set; }
 
         /// <summary>
-        /// Gets the GET response as a json formatted string
-        /// </summary>
-        /// <param name="endpointUrl">Endpoint URL</param>
-        /// <returns>
-        /// string
-        /// </returns>
-        internal async Task<string> GetJson(string endpointUrl)
-        {
-            if (WriteDebug)
-                Debug.WriteLine($"[RadarrSharp] [DEBUG] [RadarrClient.GetJson] Endpoint URL: '{endpointUrl}'");
-
-            var response = string.Empty;
-
-            using (_webClient = new WebClient { Headers = WebClientHelpers.GetWebHeaderCollection(ApiKey), Proxy = null })
-            {
-                try
-                {
-                    response = await _webClient.DownloadStringTaskAsync($"{ApiUrl}{endpointUrl}");
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine($"[RadarrSharp] [ERROR] [RadarrClient.GetJson] Endpoint URL: '{endpointUrl}', {ex}");
-                }
-                finally
-                {
-                    if (WriteDebug)
-                    {
-                        Debug.WriteLine($"[RadarrSharp] [DEBUG] [RadarrClient.PostJson] Endpoint URL: '{endpointUrl}', response: {response}");
-                        var webClientHeaders = _webClient.ResponseHeaders;
-                        if (webClientHeaders != null)
-                            for (int i = 0; i < webClientHeaders.Count; i++)
-                                Debug.WriteLine($"[RadarrSharp] [DEBUG] [RadarrClient.GetJson] Response header: {webClientHeaders.GetKey(i)}={webClientHeaders.Get(i)}");
-                    }
-                }
-            }
-
-            if (!string.IsNullOrEmpty(response)) // Convert response to UTF8
-                response = Encoding.UTF8.GetString(Encoding.Default.GetBytes(response));
-
-            return response;
-        }
-
-        /// <summary>
-        /// Gets the POST/PUT response as a json formatted string
-        /// </summary>
-        /// <param name="endpointUrl">Endpoint URL</param>
-        /// <param name="data">Json formatted string</param>
-        /// <param name="method">HTTP method, POST/PUT</param>
-        /// <returns>
-        /// string
-        /// </returns>
-        internal async Task<string> PostJson(string endpointUrl, string data, string method)
-        {
-            if (WriteDebug)
-                Debug.WriteLine($"[RadarrSharp] [DEBUG] [RadarrClient.PostJson] {method}: Endpoint URL: '{ApiUrl}{endpointUrl}', data: '{data}'");
-
-            var response = string.Empty;
-
-            using (_webClient = new WebClient { Headers = WebClientHelpers.GetWebHeaderCollection(ApiKey), Proxy = null })
-            {
-                try
-                {
-                    response = await _webClient.UploadStringTaskAsync($"{ApiUrl}{endpointUrl}", method, data);
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine($"[RadarrSharp] [ERROR] [RadarrClient.PostJson] {method}: Endpoint URL: '{endpointUrl}', data: '{data}', {ex}");
-                }
-                finally
-                {
-                    if (WriteDebug)
-                    {
-                        Debug.WriteLine($"[RadarrSharp] [DEBUG] [RadarrClient.PostJson] {method}: Endpoint URL: '{endpointUrl}', data: '{data}', response: {response}");
-                        var webClientHeaders = _webClient.ResponseHeaders;
-                        if (webClientHeaders != null)
-                            for (int i = 0; i < webClientHeaders.Count; i++)
-                                Debug.WriteLine($"[RadarrSharp] [DEBUG] [RadarrClient.GetJson] Response header: {webClientHeaders.GetKey(i)}={webClientHeaders.Get(i)}");
-                    }
-                }
-            }
-
-            if (!string.IsNullOrEmpty(response)) // Convert response to UTF8
-                response = Encoding.UTF8.GetString(Encoding.Default.GetBytes(response));
-
-            return response;
-        }
-
-
-
-
-
-
-        /// <summary>
         /// Processes the json.
         /// </summary>
         /// <param name="method">HTTP method, GET, POST or PUT</param>
@@ -425,13 +332,6 @@ namespace RadarrSharp
 
             return response;
         }
-
-
-
-
-
-
-
 
         /// <summary>
         /// Send DELETE request to specified url

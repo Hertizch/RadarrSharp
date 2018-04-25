@@ -31,7 +31,7 @@ namespace RadarrSharp.Endpoints.Log
         /// <returns></returns>
         public async Task<IList<Models.LogFile>> GetLogFiles()
         {
-            var json = await _radarrClient.GetJson($"/log/file");
+            var json = await _radarrClient.ProcessJson("GET", $"/log/file");
             return await Task.Run(() => JsonConvert.DeserializeObject<IList<Models.LogFile>>(json, Converter.Settings));
         }
 
@@ -71,7 +71,7 @@ namespace RadarrSharp.Endpoints.Log
             sb.Append($"?page={page}");
             sb.Append($"&pageSize={pageSize}");
 
-            var json = await _radarrClient.GetJson($"/log{sb.ToString()}");
+            var json = await _radarrClient.ProcessJson("GET", $"/log{sb.ToString()}");
             return await Task.Run(() => JsonConvert.DeserializeObject<Models.Log>(json, Converter.Settings));
         }
     }

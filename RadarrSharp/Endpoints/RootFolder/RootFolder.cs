@@ -27,7 +27,7 @@ namespace RadarrSharp.Endpoints.RootFolder
         /// <returns></returns>
         public async Task<IList<Models.RootFolder>> GetRootFolders()
         {
-            var json = await _radarrClient.GetJson($"/rootFolder");
+            var json = await _radarrClient.ProcessJson("GET", $"/rootFolder");
             return await Task.Run(() => JsonConvert.DeserializeObject<IList<Models.RootFolder>>(json, Converter.Settings));
         }
     }

@@ -28,7 +28,7 @@ namespace RadarrSharp.Endpoints.Queue
         /// <returns></returns>
         public async Task<IList<Models.Queue>> GetQueue()
         {
-            var json = await _radarrClient.GetJson($"/queue");
+            var json = await _radarrClient.ProcessJson("GET", $"/queue");
             return await Task.Run(() => JsonConvert.DeserializeObject<IList<Models.Queue>>(json, Converter.Settings));
         }
 

@@ -27,7 +27,7 @@ namespace RadarrSharp.Endpoints.Profile
         /// <returns></returns>
         public async Task<IList<Models.Profile>> GetProfiles()
         {
-            var json = await _radarrClient.GetJson("/profile");
+            var json = await _radarrClient.ProcessJson("GET", "/profile");
             return await Task.Run(() => JsonConvert.DeserializeObject<IList<Models.Profile>>(json, Converter.Settings));
         }
     }

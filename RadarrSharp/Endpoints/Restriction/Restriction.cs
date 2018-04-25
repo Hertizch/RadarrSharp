@@ -27,7 +27,7 @@ namespace RadarrSharp.Endpoints.Restriction
         /// <returns></returns>
         public async Task<IList<Models.Restriction>> GetRestrictions()
         {
-            var json = await _radarrClient.GetJson("/restriction");
+            var json = await _radarrClient.ProcessJson("GET", "/restriction");
             return await Task.Run(() => JsonConvert.DeserializeObject<IList<Models.Restriction>>(json, Converter.Settings));
         }
 
@@ -37,7 +37,7 @@ namespace RadarrSharp.Endpoints.Restriction
         /// <returns></returns>
         public async Task<Models.Restriction> GetRestriction(int id)
         {
-            var json = await _radarrClient.GetJson($"/restriction/id={id}");
+            var json = await _radarrClient.ProcessJson("GET", $"/restriction/id={id}");
             return await Task.Run(() => JsonConvert.DeserializeObject<Models.Restriction>(json, Converter.Settings));
         }
 
@@ -48,7 +48,7 @@ namespace RadarrSharp.Endpoints.Restriction
         /// <returns></returns>
         public async Task<Models.Restriction> UpdateRestriction(Models.Restriction restriction)
         {
-            var json = await _radarrClient.PostJson("/restriction", JsonConvert.SerializeObject(restriction, Converter.Settings), "PUT");
+            var json = await _radarrClient.ProcessJson("PUT", "/restriction", JsonConvert.SerializeObject(restriction, Converter.Settings));
             return await Task.Run(() => JsonConvert.DeserializeObject<Models.Restriction>(json, Converter.Settings));
         }
 
@@ -66,7 +66,7 @@ namespace RadarrSharp.Endpoints.Restriction
 
             string parameter = JsonConvert.SerializeObject(new Dictionary<string, object>(dictionary));
 
-            var json = await _radarrClient.PostJson("/restriction", parameter, "POST");
+            var json = await _radarrClient.ProcessJson("POST", "/restriction", parameter);
             return await Task.Run(() => JsonConvert.DeserializeObject<Models.Restriction>(json, Converter.Settings));
         }
 
@@ -84,7 +84,7 @@ namespace RadarrSharp.Endpoints.Restriction
 
             string parameter = JsonConvert.SerializeObject(new Dictionary<string, object>(dictionary));
 
-            var json = await _radarrClient.PostJson("/restriction", parameter, "POST");
+            var json = await _radarrClient.ProcessJson("POST", "/restriction", parameter);
             return await Task.Run(() => JsonConvert.DeserializeObject<Models.Restriction>(json, Converter.Settings));
         }
 

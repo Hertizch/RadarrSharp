@@ -27,7 +27,7 @@ namespace RadarrSharp.Endpoints.Notification
         /// <returns></returns>
         public async Task<IList<Models.Notification>> GetNotificationAgents()
         {
-            var json = await _radarrClient.GetJson("/notification");
+            var json = await _radarrClient.ProcessJson("GET", "/notification");
             return await Task.Run(() => JsonConvert.DeserializeObject<IList<Models.Notification>>(json, Converter.Settings));
         }
     }

@@ -27,7 +27,7 @@ namespace RadarrSharp.Endpoints.Release
         /// <returns></returns>
         public async Task<IList<Models.Release>> GetReleases()
         {
-            var json = await _radarrClient.GetJson($"/release");
+            var json = await _radarrClient.ProcessJson("GET", $"/release");
             return await Task.Run(() => JsonConvert.DeserializeObject<IList<Models.Release>>(json, Converter.Settings));
         }
 
@@ -43,7 +43,7 @@ namespace RadarrSharp.Endpoints.Release
                 ["guid"] = guid
             });
 
-            var json = await _radarrClient.PostJson($"/release", parameter, "POST");
+            var json = await _radarrClient.ProcessJson("POST", $"/release", parameter);
             return await Task.Run(() => JsonConvert.DeserializeObject<IList<Models.Release>>(json, Converter.Settings));
         }
     }

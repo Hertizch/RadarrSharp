@@ -38,7 +38,7 @@ namespace RadarrSharp.Endpoints.History
             sb.Append($"&sortKey={sortKey}");
             sb.Append($"&sortDir={sortDir}");
 
-            var json = await _radarrClient.GetJson($"/history{sb.ToString()}");
+            var json = await _radarrClient.ProcessJson("GET", $"/history{sb.ToString()}");
             return await Task.Run(() => JsonConvert.DeserializeObject<Models.History>(json, Converter.Settings));
         }
     }
