@@ -1,9 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RadarrSharp;
-using RadarrSharp.Endpoints.Movie;
-using RadarrSharp.Enums;
 using RadarrSharpUnitTest.Properties;
 
 namespace RadarrSharpUnitTest
@@ -64,6 +61,13 @@ namespace RadarrSharpUnitTest
         }*/
 
         [TestMethod]
+        public async Task SearchForMovie()
+        {
+            var obj = await _radarrClient.Movie.SearchForMovie("terminator");
+            Assert.IsNotNull(obj);
+        }
+
+        [TestMethod]
         public async Task SearchForMovieByImdbId()
         {
             var obj = await _radarrClient.Movie.SearchForMovieByImdbId("tt0859635");
@@ -73,7 +77,14 @@ namespace RadarrSharpUnitTest
         [TestMethod]
         public async Task DiscoverMovies()
         {
-            var obj = await _radarrClient.Movie.DiscoverMovies();
+            var obj = await _radarrClient.Movie.DiscoverMovies(RadarrSharp.Endpoints.Movie.MovieDiscoverAction.Popular);
+            Assert.IsNotNull(obj);
+        }
+
+        [TestMethod]
+        public async Task GetCutoffUnmet()
+        {
+            var obj = await _radarrClient.Wanted.GetCutoffUnmet();
             Assert.IsNotNull(obj);
         }
     }

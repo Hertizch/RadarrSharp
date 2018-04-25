@@ -1,6 +1,7 @@
 ﻿using RadarrSharp.Endpoints.Blacklist;
 using RadarrSharp.Endpoints.Calendar;
 using RadarrSharp.Endpoints.Command;
+using RadarrSharp.Endpoints.Config;
 using RadarrSharp.Endpoints.Diskspace;
 using RadarrSharp.Endpoints.History;
 using RadarrSharp.Endpoints.Indexer;
@@ -52,7 +53,13 @@ namespace RadarrSharp
             UseSsl = useSsl;
 
             // Set API URL
-            ApiUrl = $"http{(UseSsl ? "s" : "")}://{Host}:{Port}{("/" + UrlBase ?? "")}/api";
+            var sb = new StringBuilder();
+            sb.Append("http");
+            if (UseSsl) sb.Append("s");
+            sb.Append($"://{host}:{Port}");
+            if (UrlBase != null) sb.Append($"/{UrlBase}");
+            sb.Append("/api");
+            ApiUrl = sb.ToString();
 
             // Initialize endpoints
             Calendar = new Calendar(this);
@@ -72,6 +79,7 @@ namespace RadarrSharp
             Blacklist = new Blacklist(this);
             Notification = new Notification(this);
             RootFolder = new RootFolder(this);
+            Config = new Config(this);
         }
 
         /// <summary>
@@ -120,7 +128,7 @@ namespace RadarrSharp
         /// <value>
         /// The API URL.
         /// </value>
-        internal string ApiUrl { get; private set; }
+        public string ApiUrl { get; private set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether [write debug].
@@ -267,6 +275,14 @@ namespace RadarrSharp
         public IRootFolder RootFolder { get; }
 
         /// <summary>
+        /// Config endpoint client
+        /// </summary>
+        /// <value>
+        /// The configuration.
+        /// </value>
+        public IConfig Config { get; set; }
+
+        /// <summary>
         /// Gets the GET response as a json formatted string
         /// </summary>
         /// <param name="endpointUrl">Endpoint URL</param>
@@ -321,7 +337,7 @@ namespace RadarrSharp
         internal async Task<string> PostJson(string endpointUrl, string data, string method)
         {
             if (WriteDebug)
-                Debug.WriteLine($"[RadarrSharp] [DEBUG] [RadarrClient.PostJson] {method}: Endpoint URL: '{endpointUrl}', data: '{data}'");
+                Debug.WriteLine($"[RadarrSharp] [DEBUG] [RadarrClient.PostJson] {method}: Endpoint URL: '{ApiUrl}{endpointUrl}', data: '{data}'");
 
             var response = string.Empty;
 
@@ -353,6 +369,69 @@ namespace RadarrSharp
 
             return response;
         }
+
+
+
+
+
+
+        /// <summary>
+        /// Processes the json.
+        /// </summary>
+        /// <param name="method">HTTP method, GET, POST or PUT</param>
+        /// <param name="endpointUrl">Endpoint URL</param>
+        /// <param name="data">Json formatted string</param>
+        /// <returns></returns>
+        internal async Task<string> ProcessJson(string method, string endpointUrl, [Optional] string data)
+        {
+            if (WriteDebug)
+                Debug.WriteLine($"[RadarrSharp] [ProcessJson] [DEBUG] '{method}': Endpoint URL: '{endpointUrl}', data: '{data}'");
+
+            string response = null;
+
+            using (_webClient = new WebClient
+            {
+                Headers = WebClientHelpers.GetWebHeaderCollection(ApiKey),
+                Proxy = null
+            })
+            {
+                try
+                {
+                    if (method == "POST" || method == "PUT")
+                        response = await _webClient.UploadStringTaskAsync($"{ApiUrl}{endpointUrl}", method, data);
+
+                    if (method == "GET")
+                        response = await _webClient.DownloadStringTaskAsync($"{ApiUrl}{endpointUrl}");
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"[RadarrSharp] [ProcessJson] [ERROR] '{method}': Endpoint URL: '{endpointUrl}', data: '{data}', {ex}");
+                }
+                finally
+                {
+                    if (WriteDebug)
+                    {
+                        Debug.WriteLine($"[RadarrSharp] [ProcessJson] [DEBUG] Response: {response}");
+                        var webClientHeaders = _webClient.ResponseHeaders;
+                        if (webClientHeaders != null)
+                            for (int i = 0; i < webClientHeaders.Count; i++)
+                                Debug.WriteLine($"[RadarrSharp] [ProcessJson] [DEBUG] Response header: {webClientHeaders.GetKey(i)}={webClientHeaders.Get(i)}");
+                    }
+                }
+            }
+
+            if (!string.IsNullOrEmpty(response))
+                response = Encoding.UTF8.GetString(Encoding.Default.GetBytes(response)); // Always guarantee string as UTF-8
+
+            return response;
+        }
+
+
+
+
+
+
+
 
         /// <summary>
         /// Send DELETE request to specified url
