@@ -7,6 +7,7 @@ namespace RadarrSharp.Endpoints.SystemStatus
     /// <summary>
     /// SystemStatus endpoint client
     /// </summary>
+    /// <seealso cref="RadarrSharp.Endpoints.SystemStatus.ISystemStatus" />
     public class SystemStatus : ISystemStatus
     {
         private RadarrClient _radarrClient;

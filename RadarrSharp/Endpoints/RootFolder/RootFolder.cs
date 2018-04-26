@@ -8,6 +8,7 @@ namespace RadarrSharp.Endpoints.RootFolder
     /// <summary>
     /// RootFolder endpoint client
     /// </summary>
+    /// <seealso cref="RadarrSharp.Endpoints.RootFolder.IRootFolder" />
     public class RootFolder : IRootFolder
     {
         private RadarrClient _radarrClient;

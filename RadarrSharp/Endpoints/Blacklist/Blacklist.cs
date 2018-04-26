@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RadarrSharp.Helpers;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace RadarrSharp.Endpoints.Blacklist
@@ -7,6 +8,7 @@ namespace RadarrSharp.Endpoints.Blacklist
     /// <summary>
     /// Blacklist endpoint client
     /// </summary>
+    /// <seealso cref="RadarrSharp.Endpoints.Blacklist.IBlacklist" />
     public class Blacklist : IBlacklist
     {
         private RadarrClient _radarrClient;
@@ -28,7 +30,13 @@ namespace RadarrSharp.Endpoints.Blacklist
         /// <returns></returns>
         public async Task<Models.Blacklist> GetBlacklist(int page = 1, int pageSize = 10)
         {
-            var json = await _radarrClient.ProcessJson("GET", $"/blacklist?page={page}&pageSize={pageSize}");
+            var param = new Dictionary<string, object>
+            {
+                { "page", page },
+                { "pageSize", pageSize }
+            };
+
+            var json = await _radarrClient.ProcessJson("GET", $"/blacklist{ParameterHelper.BuildParameterString(param)}");
             return await Task.Run(() => JsonConvert.DeserializeObject<Models.Blacklist>(json, Converter.Settings));
         }
 

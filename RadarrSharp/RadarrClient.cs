@@ -3,6 +3,7 @@ using RadarrSharp.Endpoints.Calendar;
 using RadarrSharp.Endpoints.Command;
 using RadarrSharp.Endpoints.Config;
 using RadarrSharp.Endpoints.Diskspace;
+using RadarrSharp.Endpoints.ExtraFile;
 using RadarrSharp.Endpoints.History;
 using RadarrSharp.Endpoints.Indexer;
 using RadarrSharp.Endpoints.Log;
@@ -80,6 +81,7 @@ namespace RadarrSharp
             Notification = new Notification(this);
             RootFolder = new RootFolder(this);
             Config = new Config(this);
+            ExtraFile = new ExtraFile(this);
         }
 
         /// <summary>
@@ -281,6 +283,14 @@ namespace RadarrSharp
         /// The configuration.
         /// </value>
         public IConfig Config { get; set; }
+
+        /// <summary>
+        /// ExtraFile endpoint client
+        /// </summary>
+        /// <value>
+        /// The extra file.
+        /// </value>
+        public IExtraFile ExtraFile { get; }
 
         /// <summary>
         /// Processes the json.

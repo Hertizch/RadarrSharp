@@ -9,6 +9,7 @@ namespace RadarrSharp.Endpoints.Queue
     /// <summary>
     /// Queue endpoint client
     /// </summary>
+    /// <seealso cref="RadarrSharp.Endpoints.Queue.IQueue" />
     public class Queue : IQueue
     {
         private RadarrClient _radarrClient;
@@ -40,7 +41,12 @@ namespace RadarrSharp.Endpoints.Queue
         /// <returns></returns>
         public async Task DeleteFromQueue(int id, [Optional] bool blacklist)
         {
-            await _radarrClient.Delete($"/queue/id={id}{(blacklist ? $"?blacklist={blacklist}" : "")}");
+            var param = new Dictionary<string, object>
+            {
+                { "blacklist", blacklist }
+            };
+
+            await _radarrClient.Delete($"/queue/id={id}{ParameterHelper.BuildParameterString(param)}");
         }
     }
 }

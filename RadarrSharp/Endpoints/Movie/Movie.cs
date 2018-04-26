@@ -3,7 +3,6 @@ using RadarrSharp.Enums;
 using RadarrSharp.Helpers;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace RadarrSharp.Endpoints.Movie
@@ -11,6 +10,7 @@ namespace RadarrSharp.Endpoints.Movie
     /// <summary>
     /// Movie endpoint client
     /// </summary>
+    /// <seealso cref="RadarrSharp.Endpoints.Movie.IMovie" />
     public class Movie : IMovie
     {
         private RadarrClient _radarrClient;
@@ -44,13 +44,15 @@ namespace RadarrSharp.Endpoints.Movie
         /// <returns></returns>
         public async Task<Models.MoviePage> GetMoviesPaged(int page = 1, int pageSize = 10, string sortKey = "id", string sortDir = "default")
         {
-            var sb = new StringBuilder();
-            sb.Append($"?page={page}");
-            sb.Append($"&pageSize={pageSize}");
-            sb.Append($"&sortKey={sortKey}");
-            sb.Append($"&sortDir={sortDir}");
+            var param = new Dictionary<string, object>
+            {
+                { "page", page },
+                { "pageSize", pageSize },
+                { "sortKey", sortKey },
+                { "sortDir", sortDir }
+            };
 
-            var json = await _radarrClient.ProcessJson("GET", $"/movie{sb.ToString()}");
+            var json = await _radarrClient.ProcessJson("GET", $"/movie{ParameterHelper.BuildParameterString(param)}");
             return await Task.Run(() => JsonConvert.DeserializeObject<Models.MoviePage>(json, Converter.Settings));
         }
 
@@ -122,7 +124,12 @@ namespace RadarrSharp.Endpoints.Movie
         /// <returns></returns>
         public async Task DeleteMovie(int id, [Optional] bool deleteFiles)
         {
-            await _radarrClient.Delete($"/movie/id={id}{(deleteFiles ? $"?deleteFiles={deleteFiles}" : "")}");
+            var param = new Dictionary<string, object>
+            {
+                { "deleteFiles", deleteFiles }
+            };
+
+            await _radarrClient.Delete($"/movie/id={id}{ParameterHelper.BuildParameterString(param)}");
         }
 
         /// <summary>
@@ -132,7 +139,12 @@ namespace RadarrSharp.Endpoints.Movie
         /// <returns></returns>
         public async Task<IList<Models.Movie>> SearchForMovie(string title)
         {
-            var json = await _radarrClient.ProcessJson("GET", $"/movie/lookup?term={title.Replace(" ", "%20")}");
+            var param = new Dictionary<string, object>
+            {
+                { "term", title.Replace(" ", "%20") }
+            };
+
+            var json = await _radarrClient.ProcessJson("GET", $"/movie/lookup{ParameterHelper.BuildParameterString(param)}");
             return await Task.Run(() => JsonConvert.DeserializeObject<IList<Models.Movie>>(json, Converter.Settings));
         }
 
@@ -143,7 +155,12 @@ namespace RadarrSharp.Endpoints.Movie
         /// <returns></returns>
         public async Task<IList<Models.Movie>> SearchForMovieByImdbId(string imdbId)
         {
-            var json = await _radarrClient.ProcessJson("GET", $"/movie/lookup?term=imdb:{imdbId}");
+            var param = new Dictionary<string, object>
+            {
+                { "term=imdb:", imdbId }
+            };
+
+            var json = await _radarrClient.ProcessJson("GET", $"/movie/lookup{ParameterHelper.BuildParameterString(param)}");
             return await Task.Run(() => JsonConvert.DeserializeObject<IList<Models.Movie>>(json, Converter.Settings));
         }
 

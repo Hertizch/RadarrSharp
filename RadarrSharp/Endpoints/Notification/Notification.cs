@@ -8,6 +8,7 @@ namespace RadarrSharp.Endpoints.Notification
     /// <summary>
     /// Notification endpoint client
     /// </summary>
+    /// <seealso cref="RadarrSharp.Endpoints.Notification.INotification" />
     public class Notification : INotification
     {
         private RadarrClient _radarrClient;

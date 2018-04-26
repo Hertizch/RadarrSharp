@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using RadarrSharp.Helpers;
-using System.Text;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace RadarrSharp.Endpoints.History
@@ -8,6 +8,7 @@ namespace RadarrSharp.Endpoints.History
     /// <summary>
     /// History endpoint client
     /// </summary>
+    /// <seealso cref="RadarrSharp.Endpoints.History.IHistory" />
     public class History : IHistory
     {
         private RadarrClient _radarrClient;
@@ -31,14 +32,15 @@ namespace RadarrSharp.Endpoints.History
         /// <returns></returns>
         public async Task<Models.History> GetHistory(int page = 1, int pageSize = 10, string sortKey = "date", string sortDir = "default")
         {
-            var sb = new StringBuilder();
+            var param = new Dictionary<string, object>
+            {
+                { "page", page },
+                { "pageSize", pageSize },
+                { "sortKey", sortKey },
+                { "sortDir", sortDir }
+            };
 
-            sb.Append($"?page={page}");
-            sb.Append($"&pageSize={pageSize}");
-            sb.Append($"&sortKey={sortKey}");
-            sb.Append($"&sortDir={sortDir}");
-
-            var json = await _radarrClient.ProcessJson("GET", $"/history{sb.ToString()}");
+            var json = await _radarrClient.ProcessJson("GET", $"/history{ParameterHelper.BuildParameterString(param)}");
             return await Task.Run(() => JsonConvert.DeserializeObject<Models.History>(json, Converter.Settings));
         }
     }

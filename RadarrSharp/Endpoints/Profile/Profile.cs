@@ -8,6 +8,7 @@ namespace RadarrSharp.Endpoints.Profile
     /// <summary>
     /// Profile endpoint client
     /// </summary>
+    /// <seealso cref="RadarrSharp.Endpoints.Profile.IProfile" />
     public class Profile : IProfile
     {
         private RadarrClient _radarrClient;

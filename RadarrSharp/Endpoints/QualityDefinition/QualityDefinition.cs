@@ -8,6 +8,7 @@ namespace RadarrSharp.Endpoints.QualityDefinition
     /// <summary>
     /// QualityDefinition endpoint client
     /// </summary>
+    /// <seealso cref="RadarrSharp.Endpoints.QualityDefinition.IQualityDefinition" />
     public class QualityDefinition : IQualityDefinition
     {
         private RadarrClient _radarrClient;

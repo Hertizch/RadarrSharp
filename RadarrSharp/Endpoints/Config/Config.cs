@@ -7,6 +7,7 @@ namespace RadarrSharp.Endpoints.Config
     /// <summary>
     /// Config endpoint client
     /// </summary>
+    /// <seealso cref="RadarrSharp.Endpoints.Config.IConfig" />
     public class Config : IConfig
     {
         private RadarrClient _radarrClient;

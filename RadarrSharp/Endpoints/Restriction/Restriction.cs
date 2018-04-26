@@ -8,6 +8,7 @@ namespace RadarrSharp.Endpoints.Restriction
     /// <summary>
     /// Restriction endpoint client
     /// </summary>
+    /// <seealso cref="RadarrSharp.Endpoints.Restriction.IRestriction" />
     public class Restriction : IRestriction
     {
         private RadarrClient _radarrClient;

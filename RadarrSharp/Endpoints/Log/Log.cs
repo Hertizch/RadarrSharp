@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace RadarrSharp.Endpoints.Log
@@ -12,6 +11,7 @@ namespace RadarrSharp.Endpoints.Log
     /// <summary>
     /// Log endpoint client
     /// </summary>
+    /// <seealso cref="RadarrSharp.Endpoints.Log.ILog" />
     public class Log : ILog
     {
         private RadarrClient _radarrClient;
@@ -67,11 +67,13 @@ namespace RadarrSharp.Endpoints.Log
         /// <returns></returns>
         public async Task<Models.Log> GetLog(int page = 1, int pageSize = 50)
         {
-            var sb = new StringBuilder();
-            sb.Append($"?page={page}");
-            sb.Append($"&pageSize={pageSize}");
+            var param = new Dictionary<string, object>
+            {
+                { "page", page },
+                { "pageSize", pageSize }
+            };
 
-            var json = await _radarrClient.ProcessJson("GET", $"/log{sb.ToString()}");
+            var json = await _radarrClient.ProcessJson("GET", $"/log{ParameterHelper.BuildParameterString(param)}");
             return await Task.Run(() => JsonConvert.DeserializeObject<Models.Log>(json, Converter.Settings));
         }
     }

@@ -8,6 +8,7 @@ namespace RadarrSharp.Endpoints.Indexer
     /// <summary>
     /// Indexer endpoint client
     /// </summary>
+    /// <seealso cref="RadarrSharp.Endpoints.Indexer.IIndexer" />
     public class Indexer : IIndexer
     {
         private RadarrClient _radarrClient;

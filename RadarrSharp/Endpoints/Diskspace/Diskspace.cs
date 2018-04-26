@@ -8,6 +8,7 @@ namespace RadarrSharp.Endpoints.Diskspace
     /// <summary>
     /// Diskspace endpoint client
     /// </summary>
+    /// <seealso cref="RadarrSharp.Endpoints.Diskspace.IDiskspace" />
     public class Diskspace : IDiskspace
     {
         private RadarrClient _radarrClient;

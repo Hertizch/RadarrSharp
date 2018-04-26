@@ -9,6 +9,7 @@ namespace RadarrSharp.Endpoints.Command
     /// <summary>
     /// Command endpoint client
     /// </summary>
+    /// <seealso cref="RadarrSharp.Endpoints.Command.ICommand" />
     public class Command : ICommand
     {
         private RadarrClient _radarrClient;

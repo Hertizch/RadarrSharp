@@ -8,6 +8,7 @@ namespace RadarrSharp.Endpoints.Release
     /// <summary>
     /// Release endpoint client
     /// </summary>
+    /// <seealso cref="RadarrSharp.Endpoints.Release.IRelease" />
     public class Release : IRelease
     {
         private RadarrClient _radarrClient;
