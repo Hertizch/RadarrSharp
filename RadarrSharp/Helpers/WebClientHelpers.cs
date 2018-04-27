@@ -20,3 +20,5 @@ namespace RadarrSharp.Helpers
         }
     }
 }
+
+//wc.Headers.Add(HttpRequestHeader.AcceptCharset, "UTF-8");

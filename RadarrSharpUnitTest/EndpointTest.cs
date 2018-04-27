@@ -18,6 +18,13 @@ namespace RadarrSharpUnitTest
         }
 
         [TestMethod]
+        public async Task GetMovie()
+        {
+            var obj = await _radarrClient.Movie.GetMovie(489);
+            Assert.IsNotNull(obj);
+        }
+
+        [TestMethod]
         public async Task GetMoviesPaged()
         {
             var obj = await _radarrClient.Movie.GetMoviesPaged();

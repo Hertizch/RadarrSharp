@@ -309,7 +309,8 @@ namespace RadarrSharp
             using (_webClient = new WebClient
             {
                 Headers = WebClientHelpers.GetWebHeaderCollection(ApiKey),
-                Proxy = null
+                Proxy = null,
+                Encoding = Encoding.UTF8
             })
             {
                 try
@@ -336,9 +337,6 @@ namespace RadarrSharp
                     }
                 }
             }
-
-            if (!string.IsNullOrEmpty(response))
-                response = Encoding.UTF8.GetString(Encoding.Default.GetBytes(response)); // Always guarantee string as UTF-8
 
             return response;
         }
