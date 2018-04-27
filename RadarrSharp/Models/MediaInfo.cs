@@ -71,7 +71,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The run time.
         /// </value>
-        [J("runTime")] public DateTimeOffset RunTime { get; set; }
+        [J("runTime")] public TimeSpan RunTime { get; set; }
 
         /// <summary>
         /// Gets or sets the audio stream count.
