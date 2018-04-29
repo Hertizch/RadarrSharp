@@ -57,6 +57,13 @@ namespace RadarrSharp.Endpoints.Movie
         Task<Models.Movie> UpdateMovie(Models.Movie movie);
 
         /// <summary>
+        /// Update multiple existing movies
+        /// </summary>
+        /// <param name="movies">List of Movies to update - Requires all properties of Models.Movie object</param>
+        /// <returns></returns>
+        Task<IList<Models.Movie>> UpdateMovies(List<Models.Movie> movies);
+
+        /// <summary>
         /// Delete the movie with the given ID
         /// </summary>
         /// <param name="id">Movie ID</param>

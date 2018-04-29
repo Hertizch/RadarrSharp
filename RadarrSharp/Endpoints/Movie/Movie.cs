@@ -117,6 +117,17 @@ namespace RadarrSharp.Endpoints.Movie
         }
 
         /// <summary>
+        /// Update multiple existing movies
+        /// </summary>
+        /// <param name="movies">List of Movies to update - Requires all properties of Models.Movie object</param>
+        /// <returns></returns>
+        public async Task<IList<Models.Movie>> UpdateMovies(List<Models.Movie> movies)
+        {
+            var json = await _radarrClient.ProcessJson("PUT", "/movie/editor", JsonConvert.SerializeObject(movies, Converter.Settings));
+            return await Task.Run(() => JsonConvert.DeserializeObject<IList<Models.Movie>>(json, Converter.Settings));
+        }
+
+        /// <summary>
         /// Delete the movie with the given ID
         /// </summary>
         /// <param name="id">Movie ID</param>
