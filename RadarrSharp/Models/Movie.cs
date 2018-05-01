@@ -281,7 +281,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The identifier.
         /// </value>
-        [J("id")] public long Id { get; set; }
+        [J("id")] public int Id { get; set; }
 
         /// <summary>
         /// Gets or sets the movie file.
@@ -314,5 +314,13 @@ namespace RadarrSharp.Models
         /// The secondary year.
         /// </value>
         [J("secondaryYear", NullValueHandling = N.Ignore)] public long? SecondaryYear { get; set; }
+
+        /// <summary>
+        /// Gets or sets the remote poster.
+        /// </summary>
+        /// <value>
+        /// The remote poster.
+        /// </value>
+        [J("remotePoster", NullValueHandling = N.Ignore)] public string RemotePoster { get; set; }
     }
 }
