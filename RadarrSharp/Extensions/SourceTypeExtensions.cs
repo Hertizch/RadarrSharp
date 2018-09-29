@@ -11,6 +11,9 @@ namespace RadarrSharp.Extensions
             switch (str)
             {
                 case "tmdb": return SourceType.Tmdb;
+                case "mappings": return SourceType.Mappings;
+                case "user": return SourceType.User;
+                case "indexer": return SourceType.Indexer;
                 default: return null;
             }
         }
@@ -28,6 +31,9 @@ namespace RadarrSharp.Extensions
             switch (value)
             {
                 case SourceType.Tmdb: serializer.Serialize(writer, "tmdb"); break;
+                case SourceType.Mappings: serializer.Serialize(writer, "mappings"); break;
+                case SourceType.User: serializer.Serialize(writer, "user"); break;
+                case SourceType.Indexer: serializer.Serialize(writer, "indexer"); break;
             }
         }
     }

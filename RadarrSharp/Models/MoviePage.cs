@@ -14,7 +14,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The page.
         /// </value>
-        [J("page")] public long Page { get; set; }
+        [J("page")] public int Page { get; set; }
 
         /// <summary>
         /// Gets or sets the size of the page.
@@ -22,7 +22,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The size of the page.
         /// </value>
-        [J("pageSize")] public long PageSize { get; set; }
+        [J("pageSize")] public int PageSize { get; set; }
 
         /// <summary>
         /// Gets or sets the sort key.

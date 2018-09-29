@@ -33,7 +33,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The secondary year source identifier.
         /// </value>
-        [J("secondaryYearSourceId")] public long SecondaryYearSourceId { get; set; }
+        [J("secondaryYearSourceId")] public int SecondaryYearSourceId { get; set; }
 
         /// <summary>
         /// Gets or sets the sort title.
@@ -105,7 +105,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The year.
         /// </value>
-        [J("year")] public long Year { get; set; }
+        [J("year")] public int Year { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this instance has file.
@@ -145,7 +145,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The profile identifier.
         /// </value>
-        [J("profileId")] public long ProfileId { get; set; }
+        [J("profileId")] public int ProfileId { get; set; }
 
         /// <summary>
         /// Gets or sets the state of the path.
@@ -193,7 +193,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The runtime.
         /// </value>
-        [J("runtime")] public long Runtime { get; set; }
+        [J("runtime")] public int Runtime { get; set; }
 
         /// <summary>
         /// Gets or sets the last information synchronize.
@@ -273,7 +273,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The quality profile identifier.
         /// </value>
-        [J("qualityProfileId")] public long QualityProfileId { get; set; }
+        [J("qualityProfileId")] public int QualityProfileId { get; set; }
 
         /// <summary>
         /// Gets or sets the identifier.
@@ -313,7 +313,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The secondary year.
         /// </value>
-        [J("secondaryYear", NullValueHandling = N.Ignore)] public long? SecondaryYear { get; set; }
+        [J("secondaryYear", NullValueHandling = N.Ignore)] public int? SecondaryYear { get; set; }
 
         /// <summary>
         /// Gets or sets the remote poster.

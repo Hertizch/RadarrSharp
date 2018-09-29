@@ -22,7 +22,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The movie identifier.
         /// </value>
-        [J("movieId")] public long MovieId { get; set; }
+        [J("movieId")] public int MovieId { get; set; }
 
         /// <summary>
         /// Gets or sets the title.
@@ -70,6 +70,6 @@ namespace RadarrSharp.Models
         /// <value>
         /// The identifier.
         /// </value>
-        [J("id")] public long Id { get; set; }
+        [J("id")] public int Id { get; set; }
     }
 }

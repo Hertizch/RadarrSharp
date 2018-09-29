@@ -8,6 +8,21 @@
         /// <summary>
         /// The TMDB
         /// </summary>
-        Tmdb
+        Tmdb,
+
+        /// <summary>
+        /// The mappings
+        /// </summary>
+        Mappings,
+
+        /// <summary>
+        /// The user
+        /// </summary>
+        User,
+
+        /// <summary>
+        /// The indexer
+        /// </summary>
+        Indexer
     };
 }
