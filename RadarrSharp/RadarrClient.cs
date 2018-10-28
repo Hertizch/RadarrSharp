@@ -356,12 +356,12 @@ namespace RadarrSharp
             using (var httpClient = new HttpClient { BaseAddress = new Uri(ApiUrl) })
             {
                 httpClient.DefaultRequestHeaders.Add("X-Api-Key", ApiKey);
-                httpClient.DefaultRequestHeaders.Add("Content-Type", "application/json");
+                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 httpClient.DefaultRequestHeaders.Add("User-Agent", $"{Assembly.GetExecutingAssembly().GetName().Name.Replace(" ", ".")}.v{Assembly.GetExecutingAssembly().GetName().Version}");
 
                 try
                 {
-                    await httpClient.DeleteAsync(endpointUrl);
+                    await httpClient.DeleteAsync($"{ApiUrl}{endpointUrl}");
                 }
                 catch (Exception ex)
                 {

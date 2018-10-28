@@ -140,7 +140,7 @@ namespace RadarrSharp.Endpoints.Movie
                 { "deleteFiles", deleteFiles }
             };
 
-            await _radarrClient.Delete($"/movie/id={id}{ParameterHelper.BuildParameterString(param)}");
+            await _radarrClient.Delete($"/movie/{id}{ParameterHelper.BuildParameterString(param)}");
         }
 
         /// <summary>
