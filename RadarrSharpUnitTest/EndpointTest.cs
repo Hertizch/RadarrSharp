@@ -94,5 +94,12 @@ namespace RadarrSharpUnitTest
             var obj = await _radarrClient.Wanted.GetCutoffUnmet();
             Assert.IsNotNull(obj);
         }
+
+        [TestMethod]
+        public async Task GetCustomFormats()
+        {
+            var obj = await _radarrClient.CustomFormat.GetCustomFormats();
+            Assert.IsNotNull(obj);
+        }
     }
 }
