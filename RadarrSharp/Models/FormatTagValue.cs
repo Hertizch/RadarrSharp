@@ -5,22 +5,22 @@ namespace RadarrSharp.Models
     /// <summary>
     /// 
     /// </summary>
-    public partial class QualityQuality
+    public partial class FormatTagValue
     {
         /// <summary>
-        /// Gets or sets the identifier.
+        /// Gets or sets the pattern.
         /// </summary>
         /// <value>
-        /// The identifier.
+        /// The pattern.
         /// </value>
-        [J("id")] public int Id { get; set; }
+        [J("pattern")] public string Pattern { get; set; }
 
         /// <summary>
-        /// Gets or sets the name.
+        /// Gets or sets the options.
         /// </summary>
         /// <value>
-        /// The name.
+        /// The options.
         /// </value>
-        [J("name")] public string Name { get; set; }
+        [J("options")] public string Options { get; set; }
     }
 }

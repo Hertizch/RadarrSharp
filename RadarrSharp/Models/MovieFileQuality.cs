@@ -39,6 +39,6 @@ namespace RadarrSharp.Models
         /// <value>
         /// The custom formats.
         /// </value>
-        [J("customFormats")] public List<CustomFormat> CustomFormats { get; set; }
+        [J("customFormats")] public List<MovieFileQualityCustomFormat> MovieFileQualityCustomFormats { get; set; }
     }
 }

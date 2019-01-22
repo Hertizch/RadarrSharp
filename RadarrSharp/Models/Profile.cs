@@ -38,7 +38,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The items.
         /// </value>
-        [J("items")] public IList<Item> Items { get; set; }
+        [J("items")] public List<Item> Items { get; set; }
 
         /// <summary>
         /// Gets or sets the language.
@@ -54,6 +54,6 @@ namespace RadarrSharp.Models
         /// <value>
         /// The identifier.
         /// </value>
-        [J("id")] public long Id { get; set; }
+        [J("id")] public int Id { get; set; }
     }
 }

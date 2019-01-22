@@ -15,7 +15,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The order.
         /// </value>
-        [J("order")] public long Order { get; set; }
+        [J("order")] public int Order { get; set; }
 
         /// <summary>
         /// Gets or sets the name.
@@ -79,6 +79,6 @@ namespace RadarrSharp.Models
         /// <value>
         /// The select options.
         /// </value>
-        [J("selectOptions", NullValueHandling = N.Ignore)] public IList<SelectOption> SelectOptions { get; set; }
+        [J("selectOptions", NullValueHandling = N.Ignore)] public List<SelectOption> SelectOptions { get; set; }
     }
 }

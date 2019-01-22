@@ -63,7 +63,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The fields.
         /// </value>
-        [J("fields")] public IList<Field> Fields { get; set; }
+        [J("fields")] public List<Field> Fields { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the implementation.
@@ -103,6 +103,6 @@ namespace RadarrSharp.Models
         /// <value>
         /// The identifier.
         /// </value>
-        [J("id")] public long Id { get; set; }
+        [J("id")] public int Id { get; set; }
     }
 }

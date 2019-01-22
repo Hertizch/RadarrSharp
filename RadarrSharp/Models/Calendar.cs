@@ -24,7 +24,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The alternative titles.
         /// </value>
-        [J("alternativeTitles")] public IList<AlternativeTitle> AlternativeTitles { get; set; }
+        [J("alternativeTitles")] public List<AlternativeTitle> AlternativeTitles { get; set; }
 
         /// <summary>
         /// Gets or sets the secondary year source identifier.
@@ -88,7 +88,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The images.
         /// </value>
-        [J("images")] public IList<Image> Images { get; set; }
+        [J("images")] public List<Image> Images { get; set; }
 
         /// <summary>
         /// Gets or sets the website.
@@ -248,7 +248,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The genres.
         /// </value>
-        [J("genres")] public IList<object> Genres { get; set; }
+        [J("genres")] public List<object> Genres { get; set; }
 
         /// <summary>
         /// Gets or sets the tags.
@@ -256,7 +256,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The tags.
         /// </value>
-        [J("tags")] public IList<object> Tags { get; set; }
+        [J("tags")] public List<object> Tags { get; set; }
 
         /// <summary>
         /// Gets or sets the added.

@@ -5,7 +5,7 @@ namespace RadarrSharp.Models
     /// <summary>
     /// 
     /// </summary>
-    public partial class FormatTag
+    public partial class MovieFileQualityFormatTag
     {
         /// <summary>
         /// Gets or sets the raw.
@@ -32,11 +32,11 @@ namespace RadarrSharp.Models
         [J("tagModifier")] public string TagModifier { get; set; }
 
         /// <summary>
-        /// Gets or sets the format tag value.
+        /// Gets or sets the movie file quality format value.
         /// </summary>
         /// <value>
-        /// The format tag value.
+        /// The movie file quality format value.
         /// </value>
-        [J("value")] public FormatTagValue FormatTagValue { get; set; }
+        [J("value")] public MovieFileQualityFormatValue MovieFileQualityFormatValue { get; set; }
     }
 }

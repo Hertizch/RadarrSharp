@@ -73,7 +73,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The indexer identifier.
         /// </value>
-        [J("indexerId")] public long IndexerId { get; set; }
+        [J("indexerId")] public int IndexerId { get; set; }
 
         /// <summary>
         /// Gets or sets the indexer.
@@ -121,7 +121,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The season number.
         /// </value>
-        [J("seasonNumber")] public long SeasonNumber { get; set; }
+        [J("seasonNumber")] public int SeasonNumber { get; set; }
 
         /// <summary>
         /// Gets or sets the language.
@@ -153,7 +153,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The episode numbers.
         /// </value>
-        [J("episodeNumbers")] public IList<object> EpisodeNumbers { get; set; }
+        [J("episodeNumbers")] public List<object> EpisodeNumbers { get; set; }
 
         /// <summary>
         /// Gets or sets the absolute episode numbers.
@@ -161,7 +161,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The absolute episode numbers.
         /// </value>
-        [J("absoluteEpisodeNumbers")] public IList<object> AbsoluteEpisodeNumbers { get; set; }
+        [J("absoluteEpisodeNumbers")] public List<object> AbsoluteEpisodeNumbers { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="Release"/> is approved.
@@ -209,7 +209,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The rejections.
         /// </value>
-        [J("rejections")] public IList<string> Rejections { get; set; }
+        [J("rejections")] public List<string> Rejections { get; set; }
 
         /// <summary>
         /// Gets or sets the publish date.
@@ -273,7 +273,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The indexer flags.
         /// </value>
-        [J("indexerFlags")] public IList<string> IndexerFlags { get; set; }
+        [J("indexerFlags")] public List<string> IndexerFlags { get; set; }
 
         /// <summary>
         /// Gets or sets the magnet URL.
@@ -297,7 +297,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The seeders.
         /// </value>
-        [J("seeders")] public long Seeders { get; set; }
+        [J("seeders")] public int Seeders { get; set; }
 
         /// <summary>
         /// Gets or sets the leechers.
@@ -305,7 +305,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The leechers.
         /// </value>
-        [J("leechers")] public long Leechers { get; set; }
+        [J("leechers")] public int Leechers { get; set; }
 
         /// <summary>
         /// Gets or sets the protocol.

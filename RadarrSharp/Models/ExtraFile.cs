@@ -13,7 +13,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The movie identifier.
         /// </value>
-        [J("movieId")] public long MovieId { get; set; }
+        [J("movieId")] public int MovieId { get; set; }
 
         /// <summary>
         /// Gets or sets the movie file identifier.
@@ -21,7 +21,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The movie file identifier.
         /// </value>
-        [J("movieFileId")] public long MovieFileId { get; set; }
+        [J("movieFileId")] public int MovieFileId { get; set; }
 
         /// <summary>
         /// Gets or sets the relative path.
@@ -53,6 +53,6 @@ namespace RadarrSharp.Models
         /// <value>
         /// The identifier.
         /// </value>
-        [J("id")] public long Id { get; set; }
+        [J("id")] public int Id { get; set; }
     }
 }

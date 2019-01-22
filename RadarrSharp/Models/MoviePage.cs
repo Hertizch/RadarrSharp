@@ -46,7 +46,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The total movies.
         /// </value>
-        [J("totalRecords")] public long TotalMovies { get; set; }
+        [J("totalRecords")] public int TotalMovies { get; set; }
 
         /// <summary>
         /// Gets or sets the movies.
@@ -54,6 +54,6 @@ namespace RadarrSharp.Models
         /// <value>
         /// The movies.
         /// </value>
-        [J("records")] public IList<Movie> Movies { get; set; }
+        [J("records")] public List<Movie> Movies { get; set; }
     }
 }

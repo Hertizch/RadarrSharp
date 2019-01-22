@@ -3,8 +3,10 @@ using J = Newtonsoft.Json.JsonPropertyAttribute;
 
 namespace RadarrSharp.Models
 {
-    /// <summary></summary>
-    public partial class CustomFormat
+    /// <summary>
+    /// 
+    /// </summary>
+    public partial class MovieFileQualityCustomFormat
     {
         /// <summary>
         /// Gets or sets the name.
@@ -20,7 +22,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The format tags.
         /// </value>
-        [J("formatTags")] public List<string> FormatTags { get; set; }
+        [J("formatTags")] public List<MovieFileQualityFormatTag> MovieFileQualityFormatTags { get; set; }
 
         /// <summary>
         /// Gets or sets the identifier.
@@ -28,6 +30,6 @@ namespace RadarrSharp.Models
         /// <value>
         /// The identifier.
         /// </value>
-        [J("id")] public int Id { get; set; }
+        [J("id")] public long Id { get; set; }
     }
 }

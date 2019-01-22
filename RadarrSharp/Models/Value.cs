@@ -22,7 +22,7 @@ namespace RadarrSharp.Models
         /// <summary>
         /// The integer array
         /// </summary>
-        public IList<object> AnythingArray;
+        public List<object> AnythingArray;
 
         /// <summary>
         /// The string
@@ -54,7 +54,7 @@ namespace RadarrSharp.Models
                     Bool = serializer.Deserialize<bool>(reader);
                     return;
                 case JsonToken.StartArray:
-                    AnythingArray = serializer.Deserialize<IList<object>>(reader);
+                    AnythingArray = serializer.Deserialize<List<object>>(reader);
                     return;
                 case JsonToken.String:
                 case JsonToken.Date:

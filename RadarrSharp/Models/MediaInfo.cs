@@ -31,7 +31,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The video bit depth.
         /// </value>
-        [J("videoBitDepth")] public long VideoBitDepth { get; set; }
+        [J("videoBitDepth")] public int VideoBitDepth { get; set; }
 
         /// <summary>
         /// Gets or sets the width.
@@ -39,7 +39,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The width.
         /// </value>
-        [J("width")] public long Width { get; set; }
+        [J("width")] public int Width { get; set; }
 
         /// <summary>
         /// Gets or sets the height.
@@ -47,7 +47,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The height.
         /// </value>
-        [J("height")] public long Height { get; set; }
+        [J("height")] public int Height { get; set; }
 
         /// <summary>
         /// Gets or sets the audio format.
@@ -79,7 +79,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The audio stream count.
         /// </value>
-        [J("audioStreamCount")] public long AudioStreamCount { get; set; }
+        [J("audioStreamCount")] public int AudioStreamCount { get; set; }
 
         /// <summary>
         /// Gets or sets the audio channels.
@@ -87,7 +87,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The audio channels.
         /// </value>
-        [J("audioChannels")] public long AudioChannels { get; set; }
+        [J("audioChannels")] public int AudioChannels { get; set; }
 
         /// <summary>
         /// Gets or sets the audio channel positions.

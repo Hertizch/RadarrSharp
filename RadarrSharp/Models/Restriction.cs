@@ -31,7 +31,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The identifier.
         /// </value>
-        [J("id")] public long Id { get; set; }
+        [J("id")] public int Id { get; set; }
 
         /// <summary>
         /// Gets or sets the restriction required.

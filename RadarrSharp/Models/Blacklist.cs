@@ -54,6 +54,6 @@ namespace RadarrSharp.Models
         /// <value>
         /// The records.
         /// </value>
-        [J("records")] public IList<Record> Records { get; set; }
+        [J("records")] public List<Record> Records { get; set; }
     }
 }
