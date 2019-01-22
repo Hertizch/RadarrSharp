@@ -1,4 +1,5 @@
-﻿using J = Newtonsoft.Json.JsonPropertyAttribute;
+﻿using System.Collections.Generic;
+using J = Newtonsoft.Json.JsonPropertyAttribute;
 using N = Newtonsoft.Json.NullValueHandling;
 
 namespace RadarrSharp.Models
@@ -31,5 +32,13 @@ namespace RadarrSharp.Models
         /// The hardcoded subs.
         /// </value>
         [J("hardcodedSubs", NullValueHandling = N.Ignore)] public string HardcodedSubs { get; set; }
+
+        /// <summary>
+        /// Gets or sets the custom formats.
+        /// </summary>
+        /// <value>
+        /// The custom formats.
+        /// </value>
+        [J("customFormats")] public List<CustomFormat> CustomFormats { get; set; }
     }
 }

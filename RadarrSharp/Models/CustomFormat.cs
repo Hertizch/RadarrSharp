@@ -1,4 +1,5 @@
-﻿using J = Newtonsoft.Json.JsonPropertyAttribute;
+﻿using System.Collections.Generic;
+using J = Newtonsoft.Json.JsonPropertyAttribute;
 
 namespace RadarrSharp.Models
 {
@@ -19,7 +20,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The format tags.
         /// </value>
-        [J("formatTags")] public string[] FormatTags { get; set; }
+        [J("formatTags")] public List<FormatTag> FormatTags { get; set; }
 
         /// <summary>
         /// Gets or sets the identifier.
@@ -27,6 +28,6 @@ namespace RadarrSharp.Models
         /// <value>
         /// The identifier.
         /// </value>
-        [J("id")] public long Id { get; set; }
+        [J("id")] public int Id { get; set; }
     }
 }
