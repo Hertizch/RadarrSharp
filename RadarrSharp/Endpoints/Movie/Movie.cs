@@ -99,7 +99,7 @@ namespace RadarrSharp.Endpoints.Movie
             if (addOptions != null)
                 dictionary.Add("addOptions", addOptions);
 
-            string parameter = JsonConvert.SerializeObject(new Dictionary<string, object>(dictionary));
+            var parameter = JsonConvert.SerializeObject(new Dictionary<string, object>(dictionary));
 
             var json = await _radarrClient.ProcessJson("POST", "/movie", parameter);
             return await Task.Run(() => JsonConvert.DeserializeObject<Models.Movie>(json, Converter.Settings));
@@ -166,12 +166,7 @@ namespace RadarrSharp.Endpoints.Movie
         /// <returns></returns>
         public async Task<IList<Models.Movie>> SearchForMovieByImdbId(string imdbId)
         {
-            var param = new Dictionary<string, object>
-            {
-                { "term=imdb:", imdbId }
-            };
-
-            var json = await _radarrClient.ProcessJson("GET", $"/movie/lookup{ParameterHelper.BuildParameterString(param)}");
+            var json = await _radarrClient.ProcessJson("GET", $"/movie/lookup?term=imdb:{imdbId}");
             return await Task.Run(() => JsonConvert.DeserializeObject<IList<Models.Movie>>(json, Converter.Settings));
         }
 
