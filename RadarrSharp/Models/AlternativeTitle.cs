@@ -4,7 +4,7 @@ using J = Newtonsoft.Json.JsonPropertyAttribute;
 namespace RadarrSharp.Models
 {
     /// <summary>
-    /// 
+    ///
     /// </summary>
     public partial class AlternativeTitle
     {
@@ -62,7 +62,7 @@ namespace RadarrSharp.Models
         /// <value>
         /// The language.
         /// </value>
-        [J("language")] public string Language { get; set; }
+        [J("language")] public Language Language { get; set; }
 
         /// <summary>
         /// Gets or sets the identifier.
